@@ -2,6 +2,11 @@ import React from 'react';
 import car1 from '../../../assets/car/car1.jpg'
 import car2 from '../../../assets/car/car2.jpg'
 import car3 from '../../../assets/car/car3.jpg'
+import car5 from '../../../assets/car/car5.jpg'
+import Section1 from '../Section1/Section1';
+import Section2 from '../Section2/Section2';
+
+import './Home.css'
 
 const Home = () => {
     return (
@@ -30,6 +35,22 @@ const Home = () => {
                 </div>
 
             </div>
+
+            <div className='md:flex hidden w-2/3 justify-center items-center -mt-28  p-4 ml-32 ' style={{ position: 'absolute', zIndex: 2 }}>
+                <div className='relative bg-blue-100 w-1/2 '>
+                    <img src={car5} alt="" className='img-round' />
+                    <p className='absolute top-1/2 left-3/5 text-black text-3xl font-semibold ' >Chose Your Car Based On</p>
+                </div>
+                <div className='grid grid-cols-2 gap-2 bg-blue-200 p-4'>
+                    <p className='border-2 h-10 p-2 border-slate-600 bg-red-100 text-center'>Address</p>
+                    <p className='border-2 h-10 p-2 border-slate-600 bg-red-100 text-center'>Date</p>
+                    <p className='border-2 h-10 p-2 border-slate-600 bg-red-100 text-center'>Time</p>
+                    <p className='border-2 h-10 p-2 border-slate-600 bg-red-100 text-center'>Model</p>
+                </div>
+            </div>
+
+            <Section1></Section1>
+            <Section2></Section2>
         </div>
     );
 };

@@ -1,0 +1,12 @@
+.img-round {
+    opacity: 0.8;
+    height: 2 rem;
+
+}
+
+
+
+.img-round:hover {
+    opacity: 1.0;
+
+}
