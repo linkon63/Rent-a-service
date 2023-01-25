@@ -1,8 +1,9 @@
 import React from 'react';
-import car1 from '../../../assets/car/car1.jpg'
-import car2 from '../../../assets/car/car2.jpg'
-import car3 from '../../../assets/car/car3.jpg'
-import car5 from '../../../assets/car/car5.jpg'
+import { Link } from 'react-router-dom';
+import car1 from '../../assets/car/car1.jpg'
+import car2 from '../../assets/car/car2.jpg'
+import car3 from '../../assets/car/car3.jpg'
+import car5 from '../../assets/car/car5.jpg'
 import Section1 from '../Section1/Section1';
 import Section2 from '../Section2/Section2';
 
@@ -49,6 +50,19 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* kon update Code 25/1/23 */}
+            <section>
+                <h1 style={{ border: "2px solid black;" }}>Cars service</h1>
+
+                <div>
+                    <button style={{ border: "4px solid yellow;", background: "red" }}>
+                        <Link to={`/cars_services`}>Cars</Link>
+                    </button>
+                    <h1>Bus</h1>
+                    <h1>Track</h1>
+                </div>
+
+            </section>
             <Section1></Section1>
             <Section2></Section2>
         </div>
