@@ -6,6 +6,7 @@ import car3 from '../../assets/car/car3.jpg'
 import car5 from '../../assets/car/car5.jpg'
 import Section1 from '../Section1/Section1';
 import Section2 from '../Section2/Section2';
+import Section3 from '../Section3/Section3';
 
 import './Home.css'
 
@@ -51,7 +52,7 @@ const Home = () => {
             </div>
 
             {/* kon update Code 25/1/23 */}
-            <section>
+            {/* <section>
                 <h1 style={{ border: "2px solid black;" }}>Cars service</h1>
 
                 <div>
@@ -62,8 +63,9 @@ const Home = () => {
                     <h1>Track</h1>
                 </div>
 
-            </section>
+            </section> */}
             <Section1></Section1>
+            <Section3></Section3>
             <Section2></Section2>
         </div>
     );

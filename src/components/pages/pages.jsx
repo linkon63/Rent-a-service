@@ -1,8 +1,10 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
-import Main from "../Layout/Main";
 import Home from "../HomePage/Home/Home";
+
+import Main from "../Layout/Main";
+
 import Cars_Service_Page from "../lib/Cars_Service_Pages/Cars_Service_Page";
 import Booking_Service from "../shared/Booking_Service/Booking_Service";
 
@@ -13,7 +15,7 @@ const pages = [
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Home></Home>
             }
         ]
     },
