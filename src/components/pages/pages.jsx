@@ -1,6 +1,7 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
+import Login from "../auth/Login/Login";
 import Home from "../HomePage/Home/Home";
 
 import Main from "../Layout/Main";
@@ -51,7 +52,7 @@ const pages = [
     },
     {
         path: "/login",
-        element: <div>Hello login!</div>,
+        element: <Login />,
 
     },
 ]
