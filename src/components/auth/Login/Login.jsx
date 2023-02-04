@@ -16,7 +16,7 @@ export default function Login() {
                 <div className="w-full px-24 z-10">
                     <h1 className="text-5xl font-bold text-left tracking-wide">Rent A Car Service</h1>
                     <p className="text-3xl my-4">Spend your time create your personal memory in unique way, anywhere.</p>
-                    <button className='rounded-full bg-lime-800 pt-2 pb-2 pl-4 pr-4 text-lg font-bold '>
+                    <button className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
                         <Link to="/registration">Create a account</Link>
                     </button>
                 </div>
