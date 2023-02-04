@@ -54,8 +54,12 @@ const pages = [
     {
         path: "/login",
         element: <Login />,
-
     },
+    {
+        path: "/admin",
+        element: <h1>Admin</h1>,
+    },
+
 ]
 export const router = createBrowserRouter(pages);
 
