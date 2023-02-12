@@ -4,6 +4,9 @@ import car1 from '../../assets/car/car1.jpg'
 import car2 from '../../assets/car/car2.jpg'
 import car3 from '../../assets/car/car3.jpg'
 import car5 from '../../assets/car/car5.jpg'
+import MissionVission from '../../lib/MissionVission/MissionVission';
+import Review from '../../lib/Review/Review';
+import Footer from '../../shared/Footer/Footer';
 import Section1 from '../Section1/Section1';
 import Section2 from '../Section2/Section2';
 import Section3 from '../Section3/Section3';
@@ -67,6 +70,9 @@ const Home = () => {
             <Section1></Section1>
             <Section3></Section3>
             <Section2></Section2>
+            {/* <MissionVission></MissionVission> */}
+            <Review></Review>
+            <Footer></Footer>
         </div>
     );
 };
