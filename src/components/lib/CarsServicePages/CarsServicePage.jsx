@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Cars_Service_Page() {
+export default function CarsServicePage() {
     return (
         <div>
             <h1>
