@@ -18,21 +18,21 @@ const Home = () => {
         <div>
             <div className="carousel w-full h-screen" style={{ position: 'relative', zIndex: 0 }}>
                 <div id="slide1" className="carousel-item relative w-full">
-                    <img src={car1} className="w-full" />
+                    <img src={car1} className="w-full" alt="" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide4" className="btn btn-circle">❮</a>
                         <a href="#slide2" className="btn btn-circle">❯</a>
                     </div>
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
-                    <img src={car2} className="w-full" />
+                    <img src={car2} className="w-full" alt="" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide1" className="btn btn-circle">❮</a>
                         <a href="#slide3" className="btn btn-circle">❯</a>
                     </div>
                 </div>
                 <div id="slide3" className="carousel-item relative w-full">
-                    <img src={car3} className="w-full" />
+                    <img src={car3} className="w-full" alt="" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide2" className="btn btn-circle">❮</a>
                         <a href="#slide1" className="btn btn-circle">❯</a>
@@ -41,7 +41,7 @@ const Home = () => {
 
             </div>
 
-            <div className='md:flex hidden w-2/3 justify-center items-center -mt-28  p-4 ml-32 ' style={{ position: 'absolute', zIndex: 2 }}>
+            {/* <div className='md:flex hidden w-2/3 justify-center items-center -mt-28  p-4 ml-32 ' style={{ position: 'absolute', zIndex: 2 }}>
                 <div className='relative bg-blue-100 w-1/2 '>
                     <img src={car5} alt="" className='img-round' />
                     <p className='absolute top-1/2 left-3/5 text-black text-3xl font-semibold ' >Chose Your Car Based On</p>
@@ -52,7 +52,7 @@ const Home = () => {
                     <p className='border-2 h-10 p-2 border-slate-600 bg-red-100 text-center'>Time</p>
                     <p className='border-2 h-10 p-2 border-slate-600 bg-red-100 text-center'>Model</p>
                 </div>
-            </div>
+            </div> */}
 
             {/* kon update Code 25/1/23 */}
             {/* <section>
@@ -67,13 +67,13 @@ const Home = () => {
                 </div>
 
             </section> */}
-            <Section1></Section1>
+            {/* <Section1></Section1> */}
             <Section3></Section3>
             <Section2></Section2>
             {/* <MissionVission></MissionVission> */}
             <Review></Review>
             <Footer></Footer>
-        </div>
+        </div >
     );
 };
 
