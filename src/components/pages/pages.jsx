@@ -6,9 +6,8 @@ import Registration from "../auth/Registration/Registration";
 import Home from "../HomePage/Home/Home";
 
 import Main from "../Layout/Main";
-
-import Cars_Service_Page from "../lib/Cars_Service_Pages/Cars_Service_Page";
-import Booking_Service from "../shared/Booking_Service/Booking_Service";
+import CarsServicePage from "../lib/CarsServicePages/CarsServicePage";
+import BookingService from "../shared/BookingService/BookingService";
 
 const pages = [
     {
@@ -17,7 +16,7 @@ const pages = [
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home />
             }
         ]
     },
@@ -30,7 +29,7 @@ const pages = [
         element: <Main />,
         children: [{
             path: "/cars_services",
-            element: <Cars_Service_Page />
+            element: <CarsServicePage />
         }
         ]
     },
@@ -39,7 +38,7 @@ const pages = [
         element: <Main />,
         children: [{
             path: "/booking_service",
-            element: <Booking_Service />
+            element: <BookingService />
         }
         ]
     },
