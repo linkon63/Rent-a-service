@@ -23,23 +23,33 @@ const pages = [
         ]
     },
     {
+        path: "/home",
+        element: <Main />,
+        children: [
+            {
+                path: '/home',
+                element: <Home />
+            }
+        ]
+    },
+    {
         path: "/about",
         element: <div>Hello about!</div>,
     },
     {
-        path: "/cars_services",
+        path: "/carsServices",
         element: <Main />,
         children: [{
-            path: "/cars_services",
+            path: "/carsServices",
             element: <CarsServicePage />
         }
         ]
     },
     {
-        path: "/booking_service",
+        path: "/bookingService",
         element: <Main />,
         children: [{
-            path: "/booking_service",
+            path: "/bookingService",
             element: <BookingService />
         }
         ]
