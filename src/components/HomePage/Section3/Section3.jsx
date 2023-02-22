@@ -27,7 +27,7 @@ const Section3 = () => {
                             <button className="btn">
 
                                 <span className="shopping-cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                                <span className="buy"><Link to='/cars_services'>GET NOW</Link></span>
+                                <span className="buy"><Link to='/carsServices'>GET NOW</Link></span>
                             </button>
 
                         </div>
