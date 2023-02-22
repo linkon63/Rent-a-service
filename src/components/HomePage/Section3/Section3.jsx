@@ -7,14 +7,12 @@ import './Section3.css'
 
 const Section3 = () => {
     return (
-        <div className=''>
-            <h1 className='font-semibold text-2xl'>Our Service</h1>
-            <div className='flex justify-around'>
-            {/* <div className='grid grid-cols-1 md:grid-cols-1 ml-10 flex'> */}
-                
+        <div className='mt-3'>
+            <h1 className='font-semibold text-3xl'>Our Service</h1>
+
+            <div className='flex justify-around mt-3'>
                 <div id="container">
                     <div className="product-details">
-
                         <h1>Car</h1>
                         <span className="hint-star star">
                             <i className="fa fa-star" aria-hidden="true"></i>
@@ -23,11 +21,7 @@ const Section3 = () => {
                             <i className="fa fa-star" aria-hidden="true"></i>
                             <i className="fa fa-star-o" aria-hidden="true"></i>
                         </span>
-
-                        <p className="information">" Let's spread the joy , here is Christmas , the most awaited day of the year.</p>
-
-
-
+                        <p className="information">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, aliquid?</p>
                         <div className="control">
 
                             <button className="btn">
