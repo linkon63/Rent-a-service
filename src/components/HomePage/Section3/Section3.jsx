@@ -8,43 +8,11 @@ import './Section3.css'
 const Section3 = () => {
     return (
         <div className=''>
-            <h1 className='text-center font-semibold text-2xl'>Our Service</h1>
-            <div className='grid grid-cols-1 md:grid-cols-1 ml-10 '>
-                {/* <div className="card w-96 bg-slate-400 shadow-xl">
-                    <div className="card-body items-center text-center">
-                        <h2 className="card-title">Car</h2>
-                        <img src={car} alt="" className='w-56' />
-                        <div className="card-actions ">
-                            <button className="btn btn-primary"><Link to='/cars_services'>Get Service</Link></button>
-                        </div>
-                    </div>
-                </div> */}
-
-                {/* <div className="card w-96 bg-slate-400 shadow-xl">
-                    <div className="card-body items-center text-center">
-                        <h2 className="card-title">Bus</h2>
-                        <img src={bus} alt="" className='w-60' />
-                        <div className="card-actions ">
-                            <button className="btn btn-primary"><Link to='/cars_services'>Get Service</Link></button>
-                        </div>
-                    </div>
-                </div> */}
-
-
-                {/* <div className="card w-96 bg-slate-400 shadow-xl">
-                    <div className="card-body items-center text-center">
-                        <h2 className="card-title ">Truck</h2>
-                        <img src={truck} alt="" className='w-56' />
-                        <div className="card-actions">
-                            <button className="btn btn-primary"><Link to='/cars_services'>Get Service</Link></button>
-                        </div>
-                    </div>
-                </div> */}
-
-
-
+            <h1 className='font-semibold text-2xl'>Our Service</h1>
+            <div className='flex justify-around'>
+            {/* <div className='grid grid-cols-1 md:grid-cols-1 ml-10 flex'> */}
+                
                 <div id="container">
-
                     <div className="product-details">
 
                         <h1>Car</h1>
@@ -71,7 +39,6 @@ const Section3 = () => {
                         </div>
 
                     </div>
-
                     <div className="product-image">
 
                         <img src="https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMHRyZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
@@ -88,9 +55,7 @@ const Section3 = () => {
                             </ul>
                         </div>
                     </div>
-
                 </div>
-
                 <div id="container">
 
                     <div className="product-details">
@@ -138,7 +103,6 @@ const Section3 = () => {
                     </div>
 
                 </div>
-
                 <div id="container">
 
                     <div className="product-details">

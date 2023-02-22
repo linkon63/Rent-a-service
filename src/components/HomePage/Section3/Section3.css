@@ -2,10 +2,10 @@
 
 
 body {
-    background: rgb(30, 41, 59);
+    /* background: rgb(30, 41, 59);
 
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover; */
 
 }
 
@@ -14,10 +14,10 @@ body {
     background: rgba(255, 255, 255, 0.90);
     text-align: center;
     border-radius: 5px;
-    overflow: hidden;
-    margin: 5em auto;
+    /* overflow: hidden; */
+    /* margin: 5em auto; */
     height: 350px;
-    width: 700px;
+    width: 30%;
 
 
 }

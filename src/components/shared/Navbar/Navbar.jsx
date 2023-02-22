@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <header class="bg-white shadow-lg h-24 hidden md:flex">
+        <header class="bg-white shadow-lg h-15 hidden md:flex">
             <a href="/#" class="border flex-shrink-0 flex items-center justify-center px-4 lg:px-6 xl:px-8">
                 <img class="" src="https://i.ibb.co/W6ZXdqN/2021-10-26-16h20-21.png" alt="" />
             </a>
