@@ -2,6 +2,7 @@ import React from 'react';
 
 import List from 'devextreme-react/list.js';
 import { navigation } from './data';
+import { Link } from 'react-router-dom';
 
 class NavigationList extends React.PureComponent {
     constructor() {
@@ -30,9 +31,13 @@ class NavigationList extends React.PureComponent {
         return (
             <div className="list" style={{ width: '200px' }}>
                 {
-                    navigation.map( nv=> (
-                        <div className='bg-primary' onClick={()=>console.log("Hello Im clicked",nv.id)}>
-                            {nv.text}
+                    navigation.map(nv => (
+                        <div className='border bg-sky-500 p-3'
+                        // onClick={() => console.log("Hello Im clicked", nv.id)}
+                        >
+                            <Link to={nv?.path}>
+                                {nv.text}
+                            </Link>
                         </div>
                     ))
                 }

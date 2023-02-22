@@ -2,6 +2,7 @@ import {
     createBrowserRouter,
 } from "react-router-dom";
 import Admin from "../admin/Admin/Admin";
+import Booked from "../admin/Booked/Booked";
 import Login from "../auth/Login/Login";
 import Registration from "../auth/Registration/Registration";
 import Home from "../HomePage/Home/Home";
@@ -57,7 +58,15 @@ const pages = [
     },
     {
         path: "/admin",
+        element: <Admin />, // Refer to dashboard 
+    },
+    {
+        path: "/dashboard",
         element: <Admin />,
+    },
+    {
+        path: "/admin/booked",
+        element: <Booked />,
     },
 
 ]
