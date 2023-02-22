@@ -78,7 +78,6 @@ body {
 
 #container .product-details>p {
     font-family: 'EB Garamond', serif;
-    text-align: center;
     font-size: 18px;
     color: #7d7d7d;
 
@@ -97,7 +96,6 @@ body {
     transition: 0.3s linear;
     background: #809fff;
     border-radius: 5px;
-    /* position: relative; */
     overflow: hidden;
     cursor: pointer;
     outline: none;
