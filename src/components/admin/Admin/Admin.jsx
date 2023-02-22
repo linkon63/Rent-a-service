@@ -1,12 +1,13 @@
 import React from 'react';
 
 import Drawer from 'devextreme-react/drawer';
-import RadioGroup from 'devextreme-react/radio-group';
 import Toolbar from 'devextreme-react/toolbar';
 import HTMLReactParser from 'html-react-parser';
 
 import { text } from './data.jsx';
 import NavigationList from './NavigationList.jsx';
+
+import RadioGroup from 'devextreme-react/radio-group';
 
 const openedStateModes = ['push', 'shrink', 'overlap'];
 const positions = ['left', 'right'];
@@ -28,7 +29,10 @@ class Admin extends React.Component {
             location: 'before',
             options: {
                 icon: 'menu',
-                onClick: () => this.setState({ opened: !this.state.opened }),
+                onClick: () => {
+                    this.setState({ opened: !this.state.opened })
+                    console.log("OnClick ToolbarItems")
+                },
             },
         }];
 
@@ -37,6 +41,8 @@ class Admin extends React.Component {
         this.onPositionChanged = this.onPositionChanged.bind(this);
         this.onPositionChanged = this.onPositionChanged.bind(this);
         this.onOutsideClick = this.onOutsideClick.bind(this);
+        this.onOptionChanged = this.onOptionChanged.bind(this);
+        this.onSelectionChanged = this.onSelectionChanged.bind(this);
     }
 
     onOpenedStateModeChanged({ value }) {
@@ -54,16 +60,33 @@ class Admin extends React.Component {
     onOutsideClick() {
         this.setState({ opened: false });
     }
+    onOptionChanged() {
+        console.log('====================================');
+        console.log("onOptionChanged onOptionChanged");
+        console.log('====================================');
+    }
+
+    onSelectionChanged() {
+        console.log('====================================');
+        console.log("onSelectionChanged onSelectionChanged");
+        console.log('====================================');
+    }
 
     render() {
         const {
-            opened, openedStateMode, position, revealMode,
+            opened, onOptionChanged, onSelectionChanged, openedStateMode, position, revealMode,
         } = this.state;
 
         return (
             <React.Fragment>
                 <Toolbar items={this.toolbarItems} />
                 <Drawer
+
+                    selectionMode={'single'}
+                    selectByClick={true}
+                    onSelectionChanged={onSelectionChanged}
+                    onOptionChanged={onOptionChanged}
+
                     opened={opened}
                     openedStateMode={openedStateMode}
                     position={position}
@@ -72,7 +95,9 @@ class Admin extends React.Component {
                     closeOnOutsideClick={this.onOutsideClick}
                     height={400}>
                     <div id="content" className="dx-theme-background-color">
-                        {HTMLReactParser(text)}
+                        <>
+                        <p>This is nav</p>
+                        </>
                     </div>
                 </Drawer>
                 {
