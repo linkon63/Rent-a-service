@@ -2,18 +2,12 @@ import React from 'react';
 
 import Drawer from 'devextreme-react/drawer';
 import Toolbar from 'devextreme-react/toolbar';
-import HTMLReactParser from 'html-react-parser';
 
-import { text } from './data.jsx';
-import NavigationList from './NavigationList.jsx';
+import NavigationList from '../Admin/NavigationList';
 
-import RadioGroup from 'devextreme-react/radio-group';
 
-const openedStateModes = ['push', 'shrink', 'overlap'];
-const positions = ['left', 'right'];
-const revealModes = ['slide', 'expand'];
 
-class Admin extends React.Component {
+class Booked extends React.Component {
     constructor() {
         super();
 
@@ -100,48 +94,13 @@ class Admin extends React.Component {
                     height={"100vh"}>
                     <div id="content" className="dx-theme-background-color">
                         <>
-                            <p>This is dashboard</p>
+                            <p>This is Booked</p>
                         </>
                     </div>
                 </Drawer>
-                {
-                    // Option of navbar added by lin kon 22/02/22
-                    // <div className="options">
-                    //     <div className="caption">Options</div>
-                    //     <div className="options-container">
-                    //         <div className="option">
-                    //             <label>Opened state mode</label>
-                    //             <RadioGroup
-                    //                 items={openedStateModes}
-                    //                 layout="horizontal"
-                    //                 value={openedStateMode}
-                    //                 onValueChanged={this.onOpenedStateModeChanged}
-                    //             />
-                    //         </div>
-                    //         <div className="option">
-                    //             <label>Position</label>
-                    //             <RadioGroup
-                    //                 items={positions}
-                    //                 layout="horizontal"
-                    //                 value={position}
-                    //                 onValueChanged={this.onPositionChanged}
-                    //             />
-                    //         </div>
-                    //         {openedStateMode !== 'push' && (<div className="option">
-                    //             <label>Reveal mode</label>
-                    //             <RadioGroup
-                    //                 items={revealModes}
-                    //                 layout="horizontal"
-                    //                 value={revealMode}
-                    //                 onValueChanged={this.onRevealModeChanged}
-                    //             />
-                    //         </div>)}
-                    //     </div>
-                    // </div>
-                }
             </React.Fragment>
         );
     }
 }
 
-export default Admin;
+export default Booked;
