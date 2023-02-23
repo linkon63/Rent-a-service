@@ -3,142 +3,151 @@ import './Review.css'
 
 const Review = () => {
     return (
-        <div className="pb-96 bg-slate-400" >
-
-            <div class="accordion d-flex justify-content-center align-items-center height" id="accordionExample">
-
-
-
-
-                <div class="row">
-
-                    <div class="col-md-6">
-
-                        <div class="p-3">
-
-
-
-                            <ul class="testimonial-list">
-                                <li>
-
-                                    <div class="card p-3" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-
-                                        <div class="d-flex flex-row align-items-center">
-
-                                            <img alt='' src="https://i.imgur.com/G1pXs7D.jpg" width="50" class="rounded-circle" />
-
-                                            <div class="d-flex flex-column ml-2">
-
-                                                <span class="font-weight-normal">Milton Austin</span>
-                                                <span>Sales Manager, Stack</span>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="card p-3" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-
-                                        <div class="d-flex flex-row align-items-center">
-
-                                            <img alt='' src="https://i.imgur.com/udGH5tO.jpg" width="50" class="rounded-circle" />
-
-                                            <div class="d-flex flex-column ml-2">
-
-                                                <span class="font-weight-normal">John Reeves</span>
-                                                <span>Head of Sales, Asana</span>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="card p-3" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-
-                                        <div class="d-flex flex-row align-items-center">
-
-                                            <img alt='' src="https://i.imgur.com/Uz4FjGZ.jpg" width="50" class="rounded-circle" />
-
-                                            <div class="d-flex flex-column ml-2">
-
-                                                <span class="font-weight-normal">Luke Harper</span>
-                                                <span>Sales Team Lead,Sketch</span>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </li>
-
-                            </ul>
+        <div>
+            {/* <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css')</style> */}
+            <div class="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
+                <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
+                    <div class="w-full max-w-6xl mx-auto">
+                        <div class="text-center max-w-xl mx-auto">
+                            <h1 class="text-6xl md:text-7xl font-bold mb-5 text-gray-600">What people <br />are saying.</h1>
+                            <h3 class="text-xl mb-5 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <div class="text-center mb-10">
+                                <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                                <span class="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                                <span class="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
+                                <span class="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                                <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="p-3 testimonials-margin">
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <h4>It was a great experience</h4>
-                                    <div class="ratings">
-
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
-
+                        <div class="-mx-3 md:flex items-start">
+                            <div class="px-3 md:w-1/3">
+                                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div class="w-full flex mb-4 items-center">
+                                        <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=1" alt="" />
+                                        </div>
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-bold text-sm uppercase text-gray-600">Kenzie Edgar.</h6>
+                                        </div>
                                     </div>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    <div class="w-full">
+                                        <p class="text-sm leading-tight"><span class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt ratione dolor exercitationem minima quas itaque saepe quasi architecto vel! Accusantium, vero sint recusandae cum tempora nemo commodi soluta deleniti.<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                    </div>
+                                </div>
+                                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div class="w-full flex mb-4 items-center">
+                                        <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=2" alt="" />
+                                        </div>
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-bold text-sm uppercase text-gray-600">Stevie Tifft.</h6>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <p class="text-sm leading-tight"><span class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Dolore quod necessitatibus, labore sapiente, est, dignissimos ullam error ipsam sint quam tempora vel.<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <h4>Thanks for this great service</h4>
-                                    <div class="ratings">
-
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
+                            <div class="px-3 md:w-1/3">
+                                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div class="w-full flex mb-4 items-center">
+                                        <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=3" alt="" />
+                                        </div>
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-bold text-sm uppercase text-gray-600">Tommie Ewart.</h6>
+                                        </div>
                                     </div>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    <div class="w-full">
+                                        <p class="text-sm leading-tight"><span class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, obcaecati ullam excepturi dicta error deleniti sequi.<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                    </div>
+                                </div>
+                                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div class="w-full flex mb-4 items-center">
+                                        <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=4" alt="" />
+                                        </div>
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-bold text-sm uppercase text-gray-600">Charlie Howse.</h6>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <p class="text-sm leading-tight"><span class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore voluptatum nostrum atque, corrupti, vitae esse id accusamus dignissimos neque reprehenderit natus, hic sequi itaque dicta nisi voluptatem! Culpa, iusto.<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <h4>You all are awesome thanks alot</h4>
-                                    <div class="ratings">
-
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-
+                            <div class="px-3 md:w-1/3">
+                                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div class="w-full flex mb-4 items-center">
+                                        <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=5" alt="" />
+                                        </div>
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-bold text-sm uppercase text-gray-600">Nevada Herbertson.</h6>
+                                        </div>
                                     </div>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    <div class="w-full">
+                                        <p class="text-sm leading-tight"><span class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptatem porro obcaecati dicta, quibusdam sunt ipsum, laboriosam nostrum facere exercitationem pariatur deserunt tempora molestiae assumenda nesciunt alias eius? Illo, autem!<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                    </div>
+                                </div>
+                                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div class="w-full flex mb-4 items-center">
+                                        <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=6" alt="" />
+                                        </div>
+                                        <div class="flex-grow pl-3">
+                                            <h6 class="font-bold text-sm uppercase text-gray-600">Kris Stanton.</h6>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <p class="text-sm leading-tight"><span class="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto, explicabo, cupiditate quas totam!<span class="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 
-        </div >
+            <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+                <div>
+                    <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+                        <img class="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" />
+                    </a>
+                </div>
+            </div>
+
+            <section className="py-6 dark:bg-gray-800 dark:text-gray-50 mt-5 mb-5">
+                <div className="container mx-auto flex flex-col justify-around p-4 text-center md:p-10 lg:flex-row">
+                    <div className="flex flex-col justify-center lg:text-left">
+                        <p className="mb-1 text-sm font-medium tracking-widest uppercase dark:text-violet-400">Hic eligendi necessitatibus quod quia</p>
+                        <h1 className="py-2 text-3xl font-medium leading-tight title-font">Master Cleanse Reliac Heirloom</h1>
+                    </div>
+                    <div className="flex flex-col items-center justify-center flex-shrink-0 mt-6 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 lg:ml-4 lg:mt-0 lg:justify-end">
+                        <button className="inline-flex items-center px-6 py-3 rounded-lg dark:bg-violet-400 dark:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="fill-current w-7 h-7 dark:text-gray-900">
+                                <path d="M 5.4160156 2.328125 L 12.935547 10.158203 C 13.132547 10.363203 13.45925 10.363203 13.65625 10.158203 L 15.179688 8.5742188 C 15.405688 8.3392188 15.354312 7.956875 15.070312 7.796875 C 11.137313 5.571875 6.2620156 2.811125 5.4160156 2.328125 z M 3.140625 2.8476562 C 3.055625 3.0456562 3 3.2629063 3 3.5039062 L 3 20.591797 C 3 20.788797 3.044375 20.970625 3.109375 21.140625 L 11.576172 12.324219 C 11.762172 12.131219 11.762172 11.826813 11.576172 11.632812 L 3.140625 2.8476562 z M 17.443359 9.2578125 C 17.335484 9.2729375 17.233297 9.32375 17.154297 9.40625 L 15.015625 11.632812 C 14.829625 11.825812 14.829625 12.130219 15.015625 12.324219 L 17.134766 14.529297 C 17.292766 14.694297 17.546141 14.729188 17.744141 14.617188 C 19.227141 13.777188 20.226563 13.212891 20.226562 13.212891 C 20.725562 12.909891 21.007 12.443547 21 11.935547 C 20.992 11.439547 20.702609 10.981938 20.224609 10.710938 C 20.163609 10.676937 19.187672 10.124359 17.763672 9.3183594 C 17.664172 9.2623594 17.551234 9.2426875 17.443359 9.2578125 z M 13.296875 13.644531 C 13.165875 13.644531 13.034047 13.696328 12.935547 13.798828 L 5.4746094 21.566406 C 6.7566094 20.837406 11.328781 18.249578 15.050781 16.142578 C 15.334781 15.981578 15.386156 15.599281 15.160156 15.363281 L 13.65625 13.798828 C 13.55775 13.696328 13.427875 13.644531 13.296875 13.644531 z"></path>
+                            </svg>
+                            <span className="flex flex-col items-start ml-4 leading-none">
+                                <span className="mb-1 text-xs">GET IT ON</span>
+                                <span className="font-semibold title-font">Google Play</span>
+                            </span>
+                        </button>
+                        <button className="inline-flex items-center px-5 py-3 rounded-lg dark:bg-violet-400 dark:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" className="fill-current w-7 h-7 dark:text-gray-900">
+                                <path d="M 44.527344 34.75 C 43.449219 37.144531 42.929688 38.214844 41.542969 40.328125 C 39.601563 43.28125 36.863281 46.96875 33.480469 46.992188 C 30.46875 47.019531 29.691406 45.027344 25.601563 45.0625 C 21.515625 45.082031 20.664063 47.03125 17.648438 47 C 14.261719 46.96875 11.671875 43.648438 9.730469 40.699219 C 4.300781 32.429688 3.726563 22.734375 7.082031 17.578125 C 9.457031 13.921875 13.210938 11.773438 16.738281 11.773438 C 20.332031 11.773438 22.589844 13.746094 25.558594 13.746094 C 28.441406 13.746094 30.195313 11.769531 34.351563 11.769531 C 37.492188 11.769531 40.8125 13.480469 43.1875 16.433594 C 35.421875 20.691406 36.683594 31.78125 44.527344 34.75 Z M 31.195313 8.46875 C 32.707031 6.527344 33.855469 3.789063 33.4375 1 C 30.972656 1.167969 28.089844 2.742188 26.40625 4.78125 C 24.878906 6.640625 23.613281 9.398438 24.105469 12.066406 C 26.796875 12.152344 29.582031 10.546875 31.195313 8.46875 Z"></path>
+                            </svg>
+                            <span className="flex flex-col items-start ml-4 leading-none">
+                                <span className="mb-1 text-xs">Download on the</span>
+                                <span className="font-semibold title-font">App Store</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
     );
 };
 
