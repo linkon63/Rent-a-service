@@ -1,4 +1,4 @@
-.bg-layers {
+/* .bg-layers {
     -webkit-animation: filter-animation 4s infinite;
     animation: filter-animation 4s infinite;
 }
@@ -48,4 +48,10 @@
     100% {
         transform: scale(.8);
     }
+} */
+
+.bgFooter {
+    opacity: 80;
+    background-color: rgb(30, 41, 59);
+    background-image: radial-gradient(circle at center, rgb(28, 42, 42), rgb(40, 30, 40), rgb(25, 25, 50), rgb(30, 41, 59));
 }
