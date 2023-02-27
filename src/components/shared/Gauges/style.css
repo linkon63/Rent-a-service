@@ -5,7 +5,7 @@
 #gauge-container {
     text-align: center;
     margin: 20px auto;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     /* background-image: url('https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/images/Gauges/mask.png'); */
     /* background-repeat: no-repeat; */
     width: 786px;
