@@ -85,7 +85,6 @@ class Admin extends React.Component {
                     />
                 </div>
                 <Drawer
-
                     selectionMode={'single'}
                     selectByClick={true}
                     onSelectionChanged={onSelectionChanged}
