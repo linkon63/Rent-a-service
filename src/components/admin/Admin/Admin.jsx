@@ -2,7 +2,7 @@ import React from 'react';
 
 import Drawer from 'devextreme-react/drawer';
 import Toolbar from 'devextreme-react/toolbar';
-import HTMLReactParser from 'html-react-parser';
+// import HTMLReactParser from 'html-react-parser';
 
 import { text } from './data.jsx';
 import NavigationList from './NavigationList.jsx';
