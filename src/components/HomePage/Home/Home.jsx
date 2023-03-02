@@ -68,10 +68,10 @@ const Home = () => {
 
             </section> */}
             {/* <Section1></Section1> */}
-            <Section3></Section3>
-            <Section2></Section2>
+            {/* <Section3></Section3> */}
+            {/* <Section2></Section2> */}
             {/* <MissionVission></MissionVission> */}
-            <Review></Review>
+            {/* <Review></Review> */}
             <Footer></Footer>
         </div >
     );
