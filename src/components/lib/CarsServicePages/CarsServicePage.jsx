@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { allCarsData } from '../../data/projectdata'
 import Gauges from '../../shared/Gauges/Gauges'
 
-import car1 from '../../assets/carservice/c1.png'
-import car2 from '../../assets/carservice/c2.png'
-import car3 from '../../assets/carservice/c3.png'
+const carsData = allCarsData;
 
 export default function CarsServicePage() {
     return (
@@ -26,7 +25,24 @@ export default function CarsServicePage() {
                         <div>
 
                             <div className="grid  grid-cols-3 gap-4 pt-2" >
-                                <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+                                {
+                                    carsData &&
+                                    carsData.map((car) => (
+                                        <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={car.id}>
+                                            <img src={car.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+                                            <div className="flex flex-col justify-between p-6 space-y-8">
+                                                <div className="space-y-2">
+                                                    <h2 className="text-3xl font-semibold tracking-wide">{car.name}</h2>
+                                                    <p className="dark:text-gray-100">{car.describe}</p>
+                                                </div>
+                                                <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
+                                                    <Link to={`/bookingService/${car.id}`}>Book Now</Link>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                                {/* <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
                                     <img src={car1} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                                     <div className="flex flex-col justify-between p-6 space-y-8">
                                         <div className="space-y-2">
@@ -61,7 +77,7 @@ export default function CarsServicePage() {
                                             <Link to={`/bookingService`}>Book Now</Link>
                                         </button>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
