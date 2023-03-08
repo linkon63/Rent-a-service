@@ -10,19 +10,19 @@ const Navbar = () => {
             <nav class="header-links contents font-semibold text-base lg:text-lg">
                 <ul class="flex items-center ml-4 xl:ml-8 mr-auto">
                     <li class="p-3 xl:p-6 active">
-                        <a href="/#">
+                        <Link to="/home">
                             <span>Home</span>
-                        </a>
+                        </Link>
                     </li>
                     <li class="p-3 xl:p-6">
-                        <a href="/#">
+                        <Link to="/service">
                             <span>Services</span>
-                        </a>
+                        </Link>
                     </li>
                     <li class="p-3 xl:p-6">
-                        <a href="/#">
+                        <Link to="/about">
                             <span>About</span>
-                        </a>
+                        </Link>
                     </li>
                     <li class="p-3 xl:p-6">
                         <a href="/#">
@@ -49,6 +49,11 @@ const Navbar = () => {
                         <Link to="/admin" className='flex items-center'>
                             <span>Admin</span>
                             <svg class="h-3 opacity-30 ml-2" aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="svg-inline--fa fa-chevron-down fa-w-14 fa-7x"><path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path></svg>
+                        </Link>
+                    </li>
+                    <li class="p-3 xl:p-6">
+                        <Link to="/login">
+                            <span>Login</span>
                         </Link>
                     </li>
                 </ul>

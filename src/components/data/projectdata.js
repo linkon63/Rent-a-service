@@ -21,21 +21,21 @@ export const allServiceData = [
         name: "Car",
         image: "https://i.ibb.co/p0sjp3X/13841402-2010-i123-005-car-headlights-AD-composition.jpg",
         describe: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, omnis.",
-        price: "$14.99"
+        price: "$14.99/perHour"
     },
     {
         id: 102,
         name: "Bus",
         image: "https://i.ibb.co/k0b3czV/full-shot-disabled-man-near-bus.jpg",
         describe: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, omnis.",
-        price: "$14.99"
+        price: "$20.99/perHour"
     },
     {
         id: 103,
         name: "Trucks",
         image: "https://i.ibb.co/kcV4PKQ/truck-long-vehicle-ready-delivering-transport.jpg",
         describe: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, omnis.",
-        price: "$14.99"
+        price: "$18.99/perHour"
     },
 ]
 
