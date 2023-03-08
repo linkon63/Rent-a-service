@@ -1,3 +1,4 @@
+import { Field, Form, Formik } from 'formik'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
@@ -20,9 +21,13 @@ export default function BookingService() {
     const filteredBus = bus.filter(data => data.id == routeId)[0]
     const filteredTruck = truck.filter(data => data.id == routeId)[0]
 
+    const handleSubmit = (values) => {
+        console.log("Values", values)
+    }
+
     return (
-        <div class="grid grid-cols-3 bg-gray-200">
-            <div className='flex items-center justify-center border border-black'>
+        <div class="grid grid-cols-3">
+            <div className='flex items-center justify-center w-100 h-100 bg-white'>
 
                 {
                     serviceName == 'car' &&
@@ -47,8 +52,8 @@ export default function BookingService() {
                 {
                     serviceName == 'bus' &&
                     filteredBus &&
-                    <div className='flex items-center justify-center '>
-                        <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={filteredBus.id}>
+                    <div className='flex items-center justify-center h-100 w-100'>
+                        <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100 h-100 w-100" key={filteredBus.id}>
                             <h5 className="text-3xl font-semibold tracking-wide text-center pb-1 pt-1">Safe journey Sir!</h5>
                             <img src={filteredBus.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                             <div className="flex flex-col justify-between p-6 space-y-8">
@@ -86,13 +91,72 @@ export default function BookingService() {
                 }
             </div>
 
-            <div className='flex items-center justify-center border border-black'>
+            <div className='flex items-center justify-center'>
                 <div>
-                    <h1>User Form</h1>
+
+                    <h1 className='bg-white text-center text-2xl p-2 text-black'>Your information</h1>
+
+                    <Formik
+                        initialValues={{
+                            name: '',
+                            phone: '',
+                            location: '',
+                            hours: '',
+                            address: '',
+                        }}
+                        validate={false}
+                        onSubmit={async (values) => {
+                            handleSubmit(values)
+                        }}
+                    >
+                        <Form>
+                            <div className="pb-2 pt-4">
+                                <Field
+                                    type="text"
+                                    name="name"
+                                    placeholder="Name"
+                                    className="block w-full p-4 text-lg rounded-sm bg-black" />
+                            </div>
+                            <div className="pb-2 pt-4 w-full flex justify-between">
+                                <Field
+                                    type="phone"
+                                    name="phone"
+                                    placeholder="Phone"
+                                    className="block w-full p-4 text-lg rounded-sm bg-black w-2/4 mr-2"
+                                />
+                                <Field
+                                    type="text"
+                                    name="location"
+                                    placeholder="location"
+                                    className="block w-full p-4 text-lg rounded-sm bg-black w-2/4 ml-2"
+                                />
+                            </div>
+                            <div className="pb-2 pt-4">
+                                <Field
+                                    type="number"
+                                    name="hours"
+                                    placeholder="Hours"
+                                    className="block w-full p-4 text-lg rounded-sm bg-black"
+                                />
+                            </div>
+                            <div className="pb-2 pt-4">
+                                <Field
+                                    type="text"
+                                    name="address"
+                                    placeholder="Address"
+                                    className="block w-full p-4 text-lg rounded-sm bg-black"
+                                />
+                            </div>
+                            <div className="px-4 pb-2 pt-4">
+                                <button type='submit'
+                                    className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Next</button>
+                            </div>
+                        </Form>
+                    </Formik>
                 </div>
             </div>
 
-            <div className='border border-black'>
+            <div className=''>
                 <PaymentForm />
             </div>
         </div>

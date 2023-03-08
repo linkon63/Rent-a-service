@@ -3,9 +3,9 @@ import '../styles/FormStyle/PaymentFormStyle/paymentStyle.css'
 export default function PaymentForm() {
     return (
         <div>
-            <div className='w-100'>
-                <div class="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 pb-10 ">
-                    <div class="w-full mx-auto rounded-lg bg-white shadow-lg p-5 text-gray-700">
+            <div className='w-50'>
+                <div class="min-w-screen min-h-screen bg-white flex items-center justify-center px-5 pb-10 ">
+                    <div class="w-full mx-auto rounded-lg bg-white p-5 text-gray-700">
                         <div class="w-full pt-1 pb-5">
                             <div class="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
                                 <i class="mdi mdi-credit-card-outline text-3xl"></i>
