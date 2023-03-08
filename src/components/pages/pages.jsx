@@ -49,7 +49,7 @@ const pages = [
         path: "/bookingService",
         element: <Main />,
         children: [{
-            path: "/bookingService",
+            path: "/bookingService/:id",
             element: <BookingService />
         }
         ]
@@ -77,6 +77,10 @@ const pages = [
     {
         path: "/admin/booked",
         element: <Booked />,
+    },
+    {
+        path: "*",
+        element: <Home />,
     },
 
 ]
