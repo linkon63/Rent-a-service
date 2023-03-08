@@ -40,7 +40,7 @@ const pages = [
         path: "/carsServices",
         element: <Main />,
         children: [{
-            path: "/carsServices",
+            path: "/carsServices/:id",
             element: <CarsServicePage />
         }
         ]
