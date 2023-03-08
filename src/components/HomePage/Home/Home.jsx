@@ -42,12 +42,12 @@ const Home = () => {
                     </div>
 
                 </div>
-                
-                <Section3></Section3>
-                <Section2></Section2>
+
+                <Section3 />
+                <Section2 />
                 {/* <MissionVission></MissionVission> */}
-                <Review></Review>
-                <Footer></Footer>
+                <Review />
+                <Footer />
             </div>
         </div >
     );
