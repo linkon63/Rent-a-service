@@ -1,5 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { sessionStorageStore } from '../../functions/commonFunctions'
 const style = {
     backgroundImage: `url("https://i.ibb.co/DKKwWKy/blue-jeep-parking-public-zone.jpg")`,
 }
@@ -7,6 +9,32 @@ const style2 = {
     backgroundImage: `url("https://i.ibb.co/ZNfxmsS/blurred-traffic-light-trails-road.jpg")`
 }
 export default function Login() {
+
+    const [loginInfo, setLoginInfo] = useState({ email: "", password: "" })
+    const navigate = useNavigate();
+    const handleLogin = (e) => {
+        e.preventDefault()
+        if (loginInfo.email != "" && loginInfo.password != "") {
+            axios.post('http://localhost:8080/userLogin', {
+                ...loginInfo
+            })
+                .then(function (response) {
+                    console.log("✅response", response);
+                    const responseEmail = response.data.userMail;
+                    console.log("responseEmail", responseEmail);
+                    sessionStorageStore("user-email", responseEmail)
+                    alert("Your account has successfully login")
+                    navigate('/home')
+                })
+                .catch(function (error) {
+                    console.log("❌error", error);
+                    // show error message and inform user
+                });
+        } else {
+            alert("Type Valid email and password !!")
+        }
+    }
+
     return (
         <section className="min-h-screen flex items-stretch text-white ">
             <div className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center"
@@ -52,16 +80,30 @@ export default function Login() {
                     </p>
                     <form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
                         <div className="pb-2 pt-4">
-                            <input type="email" name="email" id="email" placeholder="Email" className="block w-full p-4 text-lg rounded-sm bg-black" />
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                                className="block w-full p-4 text-lg rounded-sm bg-black"
+                                onChange={(e) => setLoginInfo({ ...loginInfo, email: e.target.value })}
+                            />
                         </div>
                         <div className="pb-2 pt-4">
-                            <input className="block w-full p-4 text-lg rounded-sm bg-black" type="password" name="password" id="password" placeholder="Password" />
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                                className="block w-full p-4 text-lg rounded-sm bg-black"
+                                onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
+                            />
                         </div>
                         <div className="text-right text-gray-400 hover:underline hover:text-gray-100">
                             <a href="/">Forgot your password?</a>
                         </div>
                         <div className="px-4 pb-2 pt-4">
-                            <button className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">sign in</button>
+                            <button onClick={handleLogin} className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">sign in</button>
                         </div>
 
                         <div className="p-4 text-center right-0 left-0 flex justify-center space-x-4 mt-16 lg:hidden ">
