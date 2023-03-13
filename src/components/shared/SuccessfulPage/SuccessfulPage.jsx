@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/SuccessfulPage/successfulPageStyle.css'
 export default function SuccessfulPage() {
     return (
-        <section>
+        <section className='section'>
             <div class="card">
                 <div style={{ borderRadius: "200px", height: "200px", width: "200px", "background": " #F8FAF5", margin: "0 auto" }}>
                     <i class="checkmark">✓</i>
