@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import { sessionStorageGet } from '../../functions/commonFunctions';
 import '../../styles/SuccessfulPage/successfulPageStyle.css'
 
 
@@ -9,6 +10,11 @@ export default function SuccessfulPage() {
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
         console.log("params", params)
+        const userData = sessionStorageGet("user-info")
+        if (userData) {
+            console.log("Post API", userData)
+        }
+
     }, [])
 
     return (

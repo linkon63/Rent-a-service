@@ -110,7 +110,7 @@ export default function BookingService() {
                             hours: '',
                             address: '',
                         }}
-                        validate={false}
+                        validate={true}
                         onSubmit={async (values) => {
                             handleSubmit(values)
                         }}
@@ -171,7 +171,7 @@ export default function BookingService() {
                 </div>
             </div>
 
-            <div className='flex items-center justify-center w-100 bg-white'>
+            <div className='flex items-center justify-center w-100 bg-white' style={{ background: "#A78BFA" }}>
                 <PaymentForm userInfo={userInfo} />
             </div>
         </div>
