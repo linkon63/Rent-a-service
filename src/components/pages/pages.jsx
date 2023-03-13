@@ -9,8 +9,8 @@ import Booked from "../admin/Booked/Booked";
 import Login from "../auth/Login/Login";
 import Registration from "../auth/Registration/Registration";
 import Home from "../HomePage/Home/Home";
+import ServicesPage from "../lib/ServicesPages/ServicesPage";
 
-import CarsServicePage from "../lib/CarsServicePages/CarsServicePage";
 import BookingService from "../shared/BookingService/BookingService";
 import PaymentForm from "../forms/PaymentForm";
 import SuccessfulPage from "../shared/SuccessfulPage/SuccessfulPage";
@@ -41,11 +41,11 @@ const pages = [
         element: <div>Hello about!</div>,
     },
     {
-        path: "/carsServices",
+        path: "/services",
         element: <Main />,
         children: [{
-            path: "/carsServices/:id",
-            element: <CarsServicePage />
+            path: "/services/:id",
+            element: <ServicesPage />
         }
         ]
     },

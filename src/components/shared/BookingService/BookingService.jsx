@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
 import PaymentForm from '../../forms/PaymentForm'
+import { sessionStorageStore } from '../../functions/commonFunctions'
 
 const car = allCarsData
 const bus = allBusData
@@ -27,6 +28,7 @@ export default function BookingService() {
         console.log("Values", values)
         setUserInfo(values)
         setButtonDisable(true)
+        sessionStorageStore("user-info", { ...values, vehicleId: routeId })
     }
 
     return (
@@ -169,7 +171,7 @@ export default function BookingService() {
                 </div>
             </div>
 
-            <div className='flex items-center justify-center w-100'>
+            <div className='flex items-center justify-center w-100 bg-white'>
                 <PaymentForm userInfo={userInfo} />
             </div>
         </div>

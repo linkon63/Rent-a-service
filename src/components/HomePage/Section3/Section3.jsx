@@ -16,7 +16,7 @@ const Section3 = () => {
                 {
                     serviceData &&
                     serviceData.map(service => (
-                        <Link to={`/carsServices/${service.id}`} class="group relative block overflow-hidden" >
+                        <Link to={`/services/${service.id}`} class="group relative block overflow-hidden" >
                             <button
                                 class="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
                             >

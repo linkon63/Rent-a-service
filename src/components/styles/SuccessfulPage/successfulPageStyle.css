@@ -39,3 +39,11 @@
     line-height: 200px;
     margin-left: -15px;
 }
+
+.card .button {
+    background: #88b04b;
+    color: white;
+    font-weight: 900;
+    padding: 8px 40px;
+    margin-top: 18px;
+}
