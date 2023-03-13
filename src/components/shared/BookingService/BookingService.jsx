@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
 import PaymentForm from '../../forms/PaymentForm'
@@ -17,16 +17,20 @@ export default function BookingService() {
     console.log("serviceName", serviceName)
     console.log("routeId", routeId)
 
+    const [buttonDisable, setButtonDisable] = useState(false)
+    const [userInfo, setUserInfo] = useState({})
     const filteredCar = car.filter(data => data.id == routeId)[0]
     const filteredBus = bus.filter(data => data.id == routeId)[0]
     const filteredTruck = truck.filter(data => data.id == routeId)[0]
 
     const handleSubmit = (values) => {
         console.log("Values", values)
+        setUserInfo(values)
+        setButtonDisable(true)
     }
 
     return (
-        <div class="grid grid-cols-3">
+        <div class="grid grid-cols-3 100vh" style={{ height: '100vh' }}>
             <div className='flex items-center justify-center w-100 h-100 bg-white'>
 
                 {
@@ -115,7 +119,9 @@ export default function BookingService() {
                                     type="text"
                                     name="name"
                                     placeholder="Name"
-                                    className="block w-full p-4 text-lg rounded-sm bg-black" />
+                                    className="block w-full p-4 text-lg rounded-sm bg-black"
+                                    disabled={buttonDisable}
+                                />
                             </div>
                             <div className="pb-2 pt-4 w-full flex justify-between">
                                 <Field
@@ -123,12 +129,14 @@ export default function BookingService() {
                                     name="phone"
                                     placeholder="Phone"
                                     className="block w-full p-4 text-lg rounded-sm bg-black w-2/4 mr-2"
+                                    disabled={buttonDisable}
                                 />
                                 <Field
                                     type="text"
                                     name="location"
                                     placeholder="location"
                                     className="block w-full p-4 text-lg rounded-sm bg-black w-2/4 ml-2"
+                                    disabled={buttonDisable}
                                 />
                             </div>
                             <div className="pb-2 pt-4">
@@ -137,6 +145,7 @@ export default function BookingService() {
                                     name="hours"
                                     placeholder="Hours"
                                     className="block w-full p-4 text-lg rounded-sm bg-black"
+                                    disabled={buttonDisable}
                                 />
                             </div>
                             <div className="pb-2 pt-4">
@@ -145,19 +154,23 @@ export default function BookingService() {
                                     name="address"
                                     placeholder="Address"
                                     className="block w-full p-4 text-lg rounded-sm bg-black"
+                                    disabled={buttonDisable}
                                 />
                             </div>
                             <div className="px-4 pb-2 pt-4">
                                 <button type='submit'
-                                    className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Next</button>
+                                    disabled={buttonDisable}
+                                    className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+                                    Next
+                                </button>
                             </div>
                         </Form>
                     </Formik>
                 </div>
             </div>
 
-            <div className=''>
-                <PaymentForm />
+            <div className='flex items-center justify-center w-100'>
+                <PaymentForm userInfo={userInfo} />
             </div>
         </div>
     )

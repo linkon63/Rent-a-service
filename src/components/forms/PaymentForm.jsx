@@ -10,24 +10,29 @@ import CheckoutForm from "./CheckoutForm";
 
 import '../styles/FormStyle/PaymentFormStyle/paymentStyle.css'
 
-export default function PaymentForm() {
+export default function PaymentForm({ userInfo }) {
     const stripePromise = loadStripe("pk_test_51Ie1JhBHVweerPiKD5ZiauHVxaum4XV1yLjMsUHfkMPf2T7UKNlyHOJ0u0JDpztqmYSfu9R9nRsTA8gydkmksxSr00UdXEF7bv");
-    const [clientSecret, setClientSecret] = useState("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F");
+    const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
+        const cData = { clientSecret: 'pi_3Ml2b0BHVweerPiK1sJIEAKm_secret_nxcmOmekaYQYuurRGkumnuCvL' }
         try {
-            // fetch("/create-payment-intent", {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-            // })
-            //     .then((res) => res.json())
-            //     .then((data) => setClientSecret(data.clientSecret));
-            setClientSecret("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F")
+            fetch("http://localhost:8080/create-payment-intent", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log("Data", data)
+                    // setClientSecret(cData)
+                    setClientSecret(data.clientSecret)
+                    // setClientSecret("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F")
+                });
         } catch (error) {
-            console.log("Error", error);
-            setClientSecret("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F")
+            console.log("Api call error")
+            setClientSecret(cData)
         }
     }, []);
 
@@ -35,16 +40,17 @@ export default function PaymentForm() {
         theme: 'stripe',
     };
     const options = {
-        clientSecret: "sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F",
+        clientSecret,
         appearance,
     };
+
     return (
         <div className="App">
 
             <h1>Payment</h1>
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm />
+                    <CheckoutForm userInfo={userInfo} />
                 </Elements>
             )}
 

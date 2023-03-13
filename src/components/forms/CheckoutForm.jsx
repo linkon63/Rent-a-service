@@ -6,7 +6,10 @@ import {
   useElements
 } from "@stripe/react-stripe-js";
 
-export default function CheckoutForm() {
+import '../styles/FormStyle/PaymentFormStyle/paymentStyle.css'
+
+
+export default function CheckoutForm({ userInfo }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -47,21 +50,29 @@ export default function CheckoutForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Payment Successfully", userInfo)
+    console.log("userInfo", userInfo)
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
+      console.log("Payment !stripe || !elements")
       return;
     }
 
-    setIsLoading(true);
+    // setIsLoading(true);
 
-    const { error } = await stripe.confirmPayment({
+    await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: "http://localhost:3000",
       },
+    }).then(function (result) {
+      console.log("result", result)
+      alert("Payment success")
+      if (result.error) {
+        // Inform the customer that there was an error.
+      }
     });
 
     // This point will only be reached if there is an immediate error when
@@ -69,13 +80,15 @@ export default function CheckoutForm() {
     // your `return_url`. For some payment methods like iDEAL, your customer will
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occurred.");
-    }
+    // if (error.type === "card_error" || error.type === "validation_error") {
+    //   setMessage(error.message);
+    //   console.log("error.message", error.message)
+    // } else {
+    //   setMessage("An unexpected error occurred.");
+    //   console.log("An unexpected error occurred.")
+    // }
 
-    setIsLoading(false);
+    // setIsLoading(false);
   };
 
   const paymentElementOptions = {
