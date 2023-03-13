@@ -13,6 +13,7 @@ import Home from "../HomePage/Home/Home";
 import CarsServicePage from "../lib/CarsServicePages/CarsServicePage";
 import BookingService from "../shared/BookingService/BookingService";
 import PaymentForm from "../forms/PaymentForm";
+import SuccessfulPage from "../shared/SuccessfulPage/SuccessfulPage";
 
 const pages = [
     {
@@ -64,6 +65,10 @@ const pages = [
     {
         path: "/payment",
         element: <PaymentForm />,
+    },
+    {
+        path: "/successful",
+        element: <SuccessfulPage />,
     },
     {
         path: "/registration",
