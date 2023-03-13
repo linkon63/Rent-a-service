@@ -110,7 +110,7 @@ export default function BookingService() {
                             hours: '',
                             address: '',
                         }}
-                        validate={true}
+                        validate={false}
                         onSubmit={async (values) => {
                             handleSubmit(values)
                         }}

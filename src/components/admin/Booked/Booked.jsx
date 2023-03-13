@@ -4,6 +4,7 @@ import Drawer from 'devextreme-react/drawer';
 import Toolbar from 'devextreme-react/toolbar';
 
 import NavigationList from '../Admin/NavigationList';
+import BookedPage from './BookedPage';
 
 
 
@@ -94,7 +95,7 @@ class Booked extends React.Component {
                     height={"100vh"}>
                     <div id="content" className="dx-theme-background-color">
                         <>
-                            <p>This is Booked</p>
+                            <BookedPage />
                         </>
                     </div>
                 </Drawer>

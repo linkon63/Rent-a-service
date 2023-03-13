@@ -14,6 +14,10 @@ import ServicesPage from "../lib/ServicesPages/ServicesPage";
 import BookingService from "../shared/BookingService/BookingService";
 import PaymentForm from "../forms/PaymentForm";
 import SuccessfulPage from "../shared/SuccessfulPage/SuccessfulPage";
+import PrivateRoute from "../Private/PrivateRoute";
+import TestNav from "../shared/Test/TestNav";
+import DashboardNav from "../shared/Navbar/DashboardNav";
+import BookedPage from "../admin/Booked/BookedPage";
 
 const pages = [
     {
@@ -45,7 +49,10 @@ const pages = [
         element: <Main />,
         children: [{
             path: "/services/:id",
-            element: <ServicesPage />
+            element:
+                <PrivateRoute>
+                    <ServicesPage />
+                </PrivateRoute>
         }
         ]
     },
@@ -54,7 +61,10 @@ const pages = [
         element: <Main />,
         children: [{
             path: "/bookingService/:name/:id",
-            element: <BookingService />
+            element:
+                <PrivateRoute>
+                    <BookingService />
+                </PrivateRoute>
         }
         ]
     },
@@ -64,11 +74,17 @@ const pages = [
     },
     {
         path: "/payment",
-        element: <PaymentForm />,
+        element:
+            <PrivateRoute>
+                <PaymentForm />,
+            </PrivateRoute>
     },
     {
         path: "/successful",
-        element: <SuccessfulPage />,
+        element:
+            <PrivateRoute>
+                <SuccessfulPage />,
+            </PrivateRoute>
     },
     {
         path: "/registration",
@@ -80,15 +96,36 @@ const pages = [
     },
     {
         path: "/admin",
-        element: <Admin />, // Refer to dashboard 
+        element:
+            <PrivateRoute>
+                <DashboardNav>
+                    <p>This is dashboard</p>
+                </DashboardNav>
+            </PrivateRoute>
     },
     {
         path: "/dashboard",
-        element: <Admin />,
+        element: <PrivateRoute>
+            <DashboardNav>
+                <p>This is dashboard</p>
+            </DashboardNav>
+        </PrivateRoute>,
     },
     {
         path: "/admin/booked",
-        element: <Booked />,
+        element:
+            <PrivateRoute>
+                <DashboardNav>
+                    <BookedPage />
+                </DashboardNav>
+            </PrivateRoute>
+    },
+    {
+        path: "/nav",
+        element:
+            <PrivateRoute>
+                <DashboardNav></DashboardNav>
+            </PrivateRoute>
     },
     {
         path: "*",
