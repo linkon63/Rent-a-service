@@ -1,9 +1,54 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
+
+
+// Make sure to call loadStripe outside of a component’s render to avoid
+// recreating the Stripe object on every render..
+// This is your test publishable API key..
+
 import '../styles/FormStyle/PaymentFormStyle/paymentStyle.css'
+
 export default function PaymentForm() {
+    const stripePromise = loadStripe("pk_test_51Ie1JhBHVweerPiKD5ZiauHVxaum4XV1yLjMsUHfkMPf2T7UKNlyHOJ0u0JDpztqmYSfu9R9nRsTA8gydkmksxSr00UdXEF7bv");
+    const [clientSecret, setClientSecret] = useState("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F");
+
+    useEffect(() => {
+        // Create PaymentIntent as soon as the page loads
+        try {
+            // fetch("/create-payment-intent", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json" },
+            //     body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+            // })
+            //     .then((res) => res.json())
+            //     .then((data) => setClientSecret(data.clientSecret));
+            setClientSecret("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F")
+        } catch (error) {
+            console.log("Error", error);
+            setClientSecret("sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F")
+        }
+    }, []);
+
+    const appearance = {
+        theme: 'stripe',
+    };
+    const options = {
+        clientSecret: "sk_test_51Ie1JhBHVweerPiK6OwuH7Le6GhqvqT902IKfI31hUySxJe9VIKrea23SBrYdndy2Btyx539mTZqHlEUJ02MttrN00pUQ5cz5F",
+        appearance,
+    };
     return (
-        <div>
-            <div className='w-50'>
+        <div className="App">
+
+            <h1>Payment</h1>
+            {clientSecret && (
+                <Elements options={options} stripe={stripePromise}>
+                    <CheckoutForm />
+                </Elements>
+            )}
+
+            {/* <div className='w-50'>
                 <div class="min-w-screen min-h-screen bg-white flex items-center justify-center px-5 pb-10 ">
                     <div class="w-full mx-auto rounded-lg bg-white p-5 text-gray-700">
                         <div class="w-full pt-1 pb-5">
@@ -94,7 +139,7 @@ export default function PaymentForm() {
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
 
     )

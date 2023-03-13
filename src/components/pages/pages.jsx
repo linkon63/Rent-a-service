@@ -1,15 +1,16 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
+import Main from "../layout/Main";
 import Admin from "../admin/Admin/Admin";
 import Booked from "../admin/Booked/Booked";
 import Login from "../auth/Login/Login";
 import Registration from "../auth/Registration/Registration";
 import Home from "../HomePage/Home/Home";
 
-import Main from "../Layout/Main";
 import CarsServicePage from "../lib/CarsServicePages/CarsServicePage";
 import BookingService from "../shared/BookingService/BookingService";
+import PaymentForm from "../forms/PaymentForm";
 
 const pages = [
     {
@@ -57,6 +58,10 @@ const pages = [
     {
         path: "/booking",
         element: <div>Hello booking!</div>,
+    },
+    {
+        path: "/payment",
+        element: <PaymentForm />,
     },
     {
         path: "/registration",
