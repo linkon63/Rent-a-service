@@ -45,7 +45,7 @@ const pages = [
         element: <div>Hello about!</div>,
     },
     {
-        path: "/services",
+        path: "/services/:id",
         element: <Main />,
         children: [{
             path: "/services/:id",
