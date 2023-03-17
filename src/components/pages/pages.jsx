@@ -50,9 +50,9 @@ const pages = [
         children: [{
             path: "/services/:id",
             element:
-                // <PrivateRoute>
-                <ServicesPage />
-            // </PrivateRoute>
+                <PrivateRoute>
+                    <ServicesPage />
+                </PrivateRoute>
         }
         ]
     },
@@ -62,9 +62,9 @@ const pages = [
         children: [{
             path: "/bookingService/:name/:id",
             element:
-                // <PrivateRoute>
-                <BookingService />
-            // </PrivateRoute>
+                <PrivateRoute>
+                    <BookingService />
+                </PrivateRoute>
         }
         ]
     },
@@ -75,16 +75,16 @@ const pages = [
     {
         path: "/payment",
         element:
-            // <PrivateRoute>
-            <PaymentForm />,
-        // </PrivateRoute>
+            <PrivateRoute>
+                <PaymentForm />,
+            </PrivateRoute>
     },
     {
         path: "/successful",
         element:
-            // <PrivateRoute>
-            <SuccessfulPage />,
-        // </PrivateRoute>
+            <PrivateRoute>
+                <SuccessfulPage />,
+            </PrivateRoute>
     },
     {
         path: "/registration",
@@ -97,11 +97,11 @@ const pages = [
     {
         path: "/admin",
         element:
-            // <PrivateRoute>
-            <DashboardNav>
-                <p>This is dashboard</p>
-            </DashboardNav>
-        // </PrivateRoute>
+            <PrivateRoute>
+                <DashboardNav>
+                    <p>This is dashboard</p>
+                </DashboardNav>
+            </PrivateRoute>
     },
     {
         path: "/dashboard",
@@ -114,18 +114,18 @@ const pages = [
     {
         path: "/admin/booked",
         element:
-            // <PrivateRoute>
-            <DashboardNav>
-                <BookedPage />
-            </DashboardNav>
-        // </PrivateRoute>
+            <PrivateRoute>
+                <DashboardNav>
+                    <BookedPage />
+                </DashboardNav>
+            </PrivateRoute>
     },
     {
         path: "/nav",
         element:
-            // <PrivateRoute>
-            <DashboardNav></DashboardNav>
-        // </PrivateRoute>
+            <PrivateRoute>
+                <DashboardNav></DashboardNav>
+            </PrivateRoute>
     },
     {
         path: "*",
