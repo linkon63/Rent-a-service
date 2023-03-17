@@ -40,12 +40,12 @@ export default function BookingService() {
 
     // }, [])
 
-    const handleSubmit = (values) => {
-        console.log("Values", values)
-        setUserInfo(values)
-        setButtonDisable(true)
-        sessionStorageStore("user-info", { ...values, vehicleId: routeId })
-    }
+    // const handleSubmit = (values) => {
+    //     console.log("Values", values)
+    //     setUserInfo(values)
+    //     setButtonDisable(true)
+    //     sessionStorageStore("user-info", { ...values, vehicleId: routeId })
+    // }
 
     // logs ref
     // console.log("serviceName", serviceName)
@@ -55,11 +55,11 @@ export default function BookingService() {
 
     return (
 
-        <div>
+        <div className='w-100'>
             {
                 serviceName == 'car' &&
                 filteredCar &&
-                <CheckoutPage serviceData={filteredCar} key={Math.random()} />
+                <CheckoutPage serviceData={filteredCar} key={Math.random()} routeId={routeId} />
             }
             <Footer />
             {

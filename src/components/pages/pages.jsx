@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 
 
-import Main from "../layout/Main"
+import Main from "../Layout/Main"
 import Admin from "../admin/Admin/Admin";
 import Booked from "../admin/Booked/Booked";
 import Login from "../auth/Login/Login";

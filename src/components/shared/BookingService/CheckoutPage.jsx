@@ -1,42 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Field, Form, Formik } from 'formik'
+import { sessionStorageStore } from '../../functions/commonFunctions';
 
-export default function CheckoutPage({ serviceData }) {
-    console.log("Service data", serviceData)
+export default function CheckoutPage({ serviceData, routeId }) {
+    // control state
+    const [buttonDisable, setButtonDisable] = useState(false)
+    const [userInfo, setUserInfo] = useState({})
+
+    const handleSubmit = (values) => {
+        console.log("Values", values)
+        setUserInfo(values)
+        sessionStorageStore("user-info", { ...values, vehicleId: routeId })
+        // setButtonDisable(true)
+    }
     return (
 
-        <div>
-
+        <div className='mt-2 flex justify-center'>
             <section>
-                {/* <h1 class="sr-only text-red">Checkout</h1> */}
-                {
-                    // <div className='flex items-center justify-center '>
-                    //     <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={serviceData?.id}>
-                    //         <h5 className="text-3xl font-semibold tracking-wide text-center pb-1 pt-1">Safe journey Sir!</h5>
-                    //         <img src={serviceData?.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
-                    //         <div className="flex flex-col justify-between p-6 space-y-8">
-                    //             <div className="space-y-2">
-                    //                 <h2 className="text-3xl font-semibold tracking-wide">{serviceData?.name}</h2>
-                    //                 <p className="dark:text-gray-100">{serviceData?.describe}</p>
-                    //             </div>
-                    //             <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
-                    //                 {/* <Link to={`/bookingService/${car.id}`}>Book Now</Link> */}
-                    //             </button>
-                    //         </div>
-                    //     </div>
-                    // </div>
-                }
-                <div class="mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
+                <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="bg-gray-50 py-12 md:py-24">
-                        <div class="mx-auto max-w-lg space-y-8 px-4 lg:px-8">
+                        <div class="space-y-8 px-4 lg:px-8">
                             <div class="flex items-center gap-4">
                                 <span class="h-10 w-10 rounded-full bg-blue-700"></span>
-
-                                <h2 class="font-medium text-gray-900">BambooYou</h2>
+                                <div className='w-90'>
+                                    <h2 class="font-medium text-gray-900">{serviceData?.name}   </h2>
+                                </div>
+                            </div>
+                            <div>
+                                <img src={serviceData?.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                             </div>
 
                             <div>
                                 <p class="text-2xl font-medium tracking-tight text-gray-900">
-                                    $99.99
+                                    ${serviceData?.price}/perHour
                                 </p>
 
                                 <p class="mt-1 text-sm text-gray-600">For the purchase of</p>
@@ -46,14 +42,17 @@ export default function CheckoutPage({ serviceData }) {
                                 <div class="flow-root">
                                     <ul class="-my-4 divide-y divide-gray-100">
                                         <li class="flex items-center gap-4 py-4">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                                alt=""
-                                                class="h-16 w-16 rounded object-cover"
-                                            />
 
                                             <div>
-                                                <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+                                                <h1>Review section</h1>
+                                                {/* <img
+                                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+                                                    alt=""
+                                                    class="h-16 w-16 rounded object-cover"
+                                                /> */}
+                                            </div>
+                                            <div>
+                                                {/* <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
 
                                                 <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
                                                     <div>
@@ -65,10 +64,10 @@ export default function CheckoutPage({ serviceData }) {
                                                         <dt class="inline">Color:</dt>
                                                         <dd class="inline">White</dd>
                                                     </div>
-                                                </dl>
+                                                </dl> */}
                                             </div>
                                         </li>
-
+                                        {/* 
                                         <li class="flex items-center gap-4 py-4">
                                             <img
                                                 src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
@@ -91,7 +90,7 @@ export default function CheckoutPage({ serviceData }) {
                                                     </div>
                                                 </dl>
                                             </div>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                             </div>
@@ -99,155 +98,135 @@ export default function CheckoutPage({ serviceData }) {
                     </div>
 
                     <div class="bg-white py-12 md:py-24">
-                        <div class="mx-auto max-w-lg px-4 lg:px-8">
-                            <form class="grid grid-cols-6 gap-4">
-                                <div class="col-span-3">
-                                    <label
-                                        for="FirstName"
-                                        class="block text-xs font-medium text-gray-700"
-                                    >
-                                        First Name
-                                    </label>
+                        <div class="px-4 lg:px-8">
+                            <Formik
+                                initialValues={{
+                                    name: '',
+                                    phone: '',
+                                    location: '',
+                                    hours: '',
+                                    address: '',
+                                    date: ""
+                                }}
+                                validate={false}
+                                onSubmit={async (values) => {
+                                    handleSubmit(values)
+                                }}
+                            >
+                                <Form>
+                                    <div className="pb-2">
+                                        <label
+                                            class="block text-xs font-medium text-gray-700"
+                                        >
+                                            Name
+                                        </label>
+                                        <Field
+                                            type="text"
+                                            name="name"
+                                            placeholder="Name"
+                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
+                                            disabled={buttonDisable}
 
-                                    <input
-                                        type="text"
-                                        id="FirstName"
-                                        class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-                                    />
-                                </div>
-
-                                <div class="col-span-3">
-                                    <label
-                                        for="LastName"
-                                        class="block text-xs font-medium text-gray-700"
-                                    >
-                                        Last Name
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="LastName"
-                                        class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-                                    />
-                                </div>
-
-                                <div class="col-span-6">
-                                    <label for="Email" class="block text-xs font-medium text-gray-700">
-                                        Email
-                                    </label>
-
-                                    <input
-                                        type="email"
-                                        id="Email"
-                                        class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-                                    />
-                                </div>
-
-                                <div class="col-span-6">
-                                    <label for="Phone" class="block text-xs font-medium text-gray-700">
-                                        Phone
-                                    </label>
-
-                                    <input
-                                        type="tel"
-                                        id="Phone"
-                                        class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-                                    />
-                                </div>
-
-                                <fieldset class="col-span-6">
-                                    <legend class="block text-sm font-medium text-gray-700">
-                                        Card Details
-                                    </legend>
-
-                                    <div class="mt-1 -space-y-px rounded-md bg-white shadow-sm">
-                                        <div>
-                                            <label for="CardNumber" class="sr-only"> Card Number </label>
-
-                                            <input
-                                                type="text"
-                                                id="CardNumber"
-                                                placeholder="Card Number"
-                                                class="relative mt-1 w-full rounded-t-md border-gray-200 focus:z-10 sm:text-sm"
-                                            />
-                                        </div>
-
-                                        <div class="flex -space-x-px">
-                                            <div class="flex-1">
-                                                <label for="CardExpiry" class="sr-only"> Card Expiry </label>
-
-                                                <input
-                                                    type="text"
-                                                    id="CardExpiry"
-                                                    placeholder="Expiry Date"
-                                                    class="relative w-full rounded-bl-md border-gray-200 focus:z-10 sm:text-sm"
-                                                />
-                                            </div>
-
-                                            <div class="flex-1">
-                                                <label for="CardCVC" class="sr-only"> Card CVC </label>
-
-                                                <input
-                                                    type="text"
-                                                    id="CardCVC"
-                                                    placeholder="CVC"
-                                                    class="relative w-full rounded-br-md border-gray-200 focus:z-10 sm:text-sm"
-                                                />
-                                            </div>
-                                        </div>
+                                        />
                                     </div>
-                                </fieldset>
-
-                                <fieldset class="col-span-6">
-                                    <legend class="block text-sm font-medium text-gray-700">
-                                        Billing Address
-                                    </legend>
-
-                                    <div class="mt-1 -space-y-px rounded-md bg-white shadow-sm">
+                                    <div className="pb-2 w-full flex justify-between">
                                         <div>
-                                            <label for="Country" class="sr-only">Country</label>
-
-                                            <select
-                                                id="Country"
-                                                class="relative w-full rounded-t-md border-gray-200 focus:z-10 sm:text-sm"
+                                            <label
+                                                class="block text-xs font-medium text-gray-700"
                                             >
-                                                <option>England</option>
-                                                <option>Wales</option>
-                                                <option>Scotland</option>
-                                                <option>France</option>
-                                                <option>Belgium</option>
-                                                <option>Japan</option>
-                                            </select>
+                                                Phone
+                                            </label>
+                                            <Field
+                                                type="phone"
+                                                name="phone"
+                                                placeholder="Phone"
+                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
+                                                disabled={buttonDisable}
+                                            />
                                         </div>
-
                                         <div>
-                                            <label class="sr-only" for="PostalCode"> ZIP/Post Code </label>
-
-                                            <input
+                                            <label
+                                                class="block text-xs font-medium text-gray-700"
+                                            >
+                                                Location
+                                            </label>
+                                            <Field
                                                 type="text"
-                                                id="PostalCode"
-                                                placeholder="ZIP/Post Code"
-                                                class="relative w-full rounded-b-md border-gray-200 focus:z-10 sm:text-sm"
+                                                name="location"
+                                                placeholder="Location"
+                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                disabled={buttonDisable}
                                             />
                                         </div>
                                     </div>
-                                </fieldset>
+                                    <div className="pb-2">
+                                        <label
+                                            class="block text-xs font-medium text-gray-700"
+                                        >
+                                            Hours
+                                        </label>
+                                        <Field
+                                            type="number"
+                                            name="hours"
+                                            placeholder="Hours"
+                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                            disabled={buttonDisable}
+                                        />
+                                    </div>
+                                    <div className="pb-2">
+                                        <label
+                                            class="block text-xs font-medium text-gray-700"
+                                        >
+                                            Address
+                                        </label>
+                                        <Field
+                                            type="text"
+                                            name="address"
+                                            placeholder="Address"
+                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                            disabled={buttonDisable}
+                                        />
+                                    </div>
+                                    <div className="pb-2">
+                                        <label
+                                            class="block text-xs font-medium text-gray-700"
+                                        >
+                                            Booking Start Date
+                                        </label>
+                                        <Field
+                                            type="date"
+                                            name="startDate"
+                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                            disabled={buttonDisable}
+                                        />
+                                    </div>
+                                    <div className="pb-2">
+                                        <label
+                                            class="block text-xs font-medium text-gray-700"
+                                        >
+                                            Booking End Date
+                                        </label>
+                                        <Field
+                                            type="date"
+                                            name="endDate"
+                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                            disabled={buttonDisable}
+                                        />
+                                    </div>
+                                    <div className="mt-2">
+                                        <button type='submit'
+                                            disabled={buttonDisable}
+                                            className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
+                                            Next
+                                        </button>
+                                    </div>
+                                </Form>
+                            </Formik>
 
-                                <div class="col-span-6">
-                                    <button
-                                        class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg"
-                                    >
-                                        Pay Now
-                                    </button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </section>
-
-
-
         </div>
 
 

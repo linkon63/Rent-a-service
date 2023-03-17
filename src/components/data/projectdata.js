@@ -44,19 +44,22 @@ export const allCarsData = [
         id: 1,
         name: "Ferrari",
         image: car1,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "14.99"
     },
     {
         id: 2,
         name: "Jeep",
         image: car2,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "14.99"
     },
     {
         id: 3,
         name: "BMW",
         image: car3,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "14.99"
     },
 ]
 
@@ -65,19 +68,22 @@ export const allBusData = [
         id: 201,
         name: "Long Bus",
         image: bus1,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "20.99"
     },
     {
         id: 202,
         name: "Mini Van",
         image: bus2,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "20.99"
     },
     {
         id: 203,
         name: "Mini Bus",
         image: bus3,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "20.99"
     },
 ]
 export const allTrucksData = [
@@ -85,19 +91,22 @@ export const allTrucksData = [
         id: 301,
         name: "Pickup",
         image: truck1,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "18.99"
     },
     {
         id: 302,
         name: "Mover Van",
         image: truck2,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "18.99"
     },
     {
         id: 303,
         name: "Drum Track",
         image: truck3,
-        describe: "Lorem ipsum dolor sit amet."
+        describe: "Lorem ipsum dolor sit amet.",
+        price: "18.99"
     },
 ]
 
