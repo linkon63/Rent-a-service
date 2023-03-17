@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { allServiceData } from '../../data/projectdata';
-import './Section3.css'
+import './ServiceSection.css'
 
 const serviceData = allServiceData;
 
-const Section3 = () => {
+const ServiceSection = () => {
     return (
         <div className='mt-5'>
             <div class="mb-2 text-center bg-white">
@@ -312,4 +312,4 @@ const Section3 = () => {
     );
 };
 
-export default Section3;
+export default ServiceSection;

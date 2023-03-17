@@ -1,10 +1,10 @@
 import React from 'react';
-// import car4 from '../../../assets/car/car4.jpg'
 
-const Section2 = () => {
+const HomeMidSection = () => {
     return (
         <div>
-            <div class="py-20 bg-gray-50 mt-5 mb-5 ">
+            {/* future will added this section here */}
+            {/* <div class="py-20 bg-gray-50 mt-5 mb-5 ">
                 <div class="container mx-auto px-6 md:px-12 xl:px-32">
                     <div class="mb-16 text-center">
                         <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Tailus blocks leadership</h2>
@@ -37,7 +37,7 @@ const Section2 = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <section className="py-6 dark:bg-gray-800 dark:text-gray-100 mb-5">
                 <div className="container p-4 mx-auto sm:p-10">
@@ -52,8 +52,8 @@ const Section2 = () => {
                     <div className="grid max-w-md grid-cols-1 gap-6 mx-auto auto-rows-fr lg:grid-cols-3 lg:max-w-full">
                         <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-gray-700">
                             <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-800">
-                                <p className="text-lg font-medium">Personal</p>
-                                <p className="text-5xl font-bold">0€
+                                <p className="text-lg font-medium">CAR</p>
+                                <p className="text-5xl font-bold">420€
                                     <span className="text-xl dark:text-gray-400"> /mo</span>
                                 </p>
                             </div>
@@ -78,13 +78,15 @@ const Section2 = () => {
                                         <span>Lumet consectetur adipisicing</span>
                                     </li>
                                 </ul>
-                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">Sign up</button>
+                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">
+                                    Book
+                                </button>
                             </div>
                         </div>
                         <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-violet-400">
                             <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-800">
-                                <p className="text-lg font-medium">Professional</p>
-                                <p className="text-5xl font-bold">8€
+                                <p className="text-lg font-medium">Bus</p>
+                                <p className="text-5xl font-bold">600€
                                     <span className="text-xl dark:text-gray-400"> /mo</span>
                                 </p>
                             </div>
@@ -109,13 +111,15 @@ const Section2 = () => {
                                         <span>Lumet consectetur adipisicing</span>
                                     </li>
                                 </ul>
-                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">Sign up</button>
+                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">
+                                    Book
+                                </button>
                             </div>
                         </div>
                         <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-gray-700">
                             <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-800">
-                                <p className="text-lg font-medium">Enterprise</p>
-                                <p className="text-5xl font-bold">19€
+                                <p className="text-lg font-medium">Truck</p>
+                                <p className="text-5xl font-bold">540€
                                     <span className="text-xl dark:text-gray-400"> /mo</span>
                                 </p>
                             </div>
@@ -140,7 +144,9 @@ const Section2 = () => {
                                         <span>Lumet consectetur adipisicing</span>
                                     </li>
                                 </ul>
-                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">Sign up</button>
+                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">
+                                    Book
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -231,4 +237,4 @@ const Section2 = () => {
     );
 };
 
-export default Section2;
+export default HomeMidSection;
