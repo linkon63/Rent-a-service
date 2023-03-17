@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
 import PaymentForm from '../../forms/PaymentForm'
@@ -12,19 +12,33 @@ const bus = allBusData
 const truck = allTrucksData
 
 export default function BookingService() {
-
+    // controls global variable
     let { pathname } = useLocation();
-    // console.log("location", pathname)
     const serviceName = pathname.split('/')[2]
     const routeId = pathname.split('/')[3]
-    console.log("serviceName", serviceName)
-    console.log("routeId", routeId)
-
-    const [buttonDisable, setButtonDisable] = useState(false)
-    const [userInfo, setUserInfo] = useState({})
     const filteredCar = car.filter(data => data.id == routeId)[0]
     const filteredBus = bus.filter(data => data.id == routeId)[0]
     const filteredTruck = truck.filter(data => data.id == routeId)[0]
+    // constrol state
+    const [buttonDisable, setButtonDisable] = useState(false)
+    const [userInfo, setUserInfo] = useState({})
+    const [serviceData, setServiceData] = useState({})
+    // constrols useeffect
+    // useEffect(() => {
+    //     if (filteredCar) {
+    //         console.log("Car")
+    //         setServiceData(filteredCar)
+    //     }
+    //     if (filteredBus) {
+    //         console.log("Bus")
+    //         setServiceData(filteredBus)
+    //     }
+    //     if (filteredTruck) {
+    //         console.log("Truck")
+    //         setServiceData(filteredTruck)
+    //     }
+
+    // }, [])
 
     const handleSubmit = (values) => {
         console.log("Values", values)
@@ -33,10 +47,20 @@ export default function BookingService() {
         sessionStorageStore("user-info", { ...values, vehicleId: routeId })
     }
 
+    // logs ref
+    // console.log("serviceName", serviceName)
+    // console.log("routeId", routeId)
+    // console.log("car", car)
+    // console.log("filteredCar", filteredCar)
+
     return (
 
         <div>
-            <CheckoutPage />
+            {
+                serviceName == 'car' &&
+                filteredCar &&
+                <CheckoutPage serviceData={filteredCar} key={Math.random()} />
+            }
             <Footer />
             {
                 //    <div class="grid grid-cols-3 100vh" style={{ height: '100vh' }}>
