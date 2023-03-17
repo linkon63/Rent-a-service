@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import { Field, Form, Formik } from 'formik'
 import { sessionStorageStore } from '../../functions/commonFunctions';
+import { checkoutForm } from '../../validations/validationSchema';
+import PaymentForm from '../../forms/PaymentForm';
 
 export default function CheckoutPage({ serviceData, routeId }) {
     // control state
     const [buttonDisable, setButtonDisable] = useState(false)
     const [userInfo, setUserInfo] = useState({})
+    const [sectionHide, setSectionHide] = useState(false)
 
     const handleSubmit = (values) => {
         console.log("Values", values)
         setUserInfo(values)
         sessionStorageStore("user-info", { ...values, vehicleId: routeId })
+        setSectionHide(true)
         // setButtonDisable(true)
     }
     return (
@@ -99,130 +103,156 @@ export default function CheckoutPage({ serviceData, routeId }) {
 
                     <div class="bg-white py-12 md:py-24">
                         <div class="px-4 lg:px-8">
-                            <Formik
-                                initialValues={{
-                                    name: '',
-                                    phone: '',
-                                    location: '',
-                                    hours: '',
-                                    address: '',
-                                    date: ""
-                                }}
-                                validate={false}
-                                onSubmit={async (values) => {
-                                    handleSubmit(values)
-                                }}
-                            >
-                                <Form>
-                                    <div className="pb-2">
-                                        <label
-                                            class="block text-xs font-medium text-gray-700"
-                                        >
-                                            Name
-                                        </label>
-                                        <Field
-                                            type="text"
-                                            name="name"
-                                            placeholder="Name"
-                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
-                                            disabled={buttonDisable}
+                            {
+                                !sectionHide ?
+                                    <Formik
+                                        initialValues={{
+                                            name: '',
+                                            phone: '',
+                                            location: '',
+                                            hours: '',
+                                            address: '',
+                                            date: ""
+                                        }}
+                                        validationSchema={checkoutForm}
+                                        onSubmit={async (values) => {
+                                            handleSubmit(values)
+                                            console.log("Submit form")
+                                        }}
+                                    >
+                                        {({ errors }) => {
+                                            const first = Object.keys(errors)[0];
+                                            return <Form>
+                                                <div className="pb-2">
+                                                    <label
+                                                        class="block text-xs font-medium text-gray-700"
+                                                    >
+                                                        Name *
+                                                    </label>
+                                                    <Field
+                                                        type="text"
+                                                        name="name"
+                                                        placeholder="Name"
+                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
+                                                    />
+                                                </div>
 
-                                        />
-                                    </div>
-                                    <div className="pb-2 w-full flex justify-between">
-                                        <div>
-                                            <label
-                                                class="block text-xs font-medium text-gray-700"
-                                            >
-                                                Phone
-                                            </label>
-                                            <Field
-                                                type="phone"
-                                                name="phone"
-                                                placeholder="Phone"
-                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
-                                                disabled={buttonDisable}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label
-                                                class="block text-xs font-medium text-gray-700"
-                                            >
-                                                Location
-                                            </label>
-                                            <Field
-                                                type="text"
-                                                name="location"
-                                                placeholder="Location"
-                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                                disabled={buttonDisable}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="pb-2">
-                                        <label
-                                            class="block text-xs font-medium text-gray-700"
-                                        >
-                                            Hours
-                                        </label>
-                                        <Field
-                                            type="number"
-                                            name="hours"
-                                            placeholder="Hours"
-                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                            disabled={buttonDisable}
-                                        />
-                                    </div>
-                                    <div className="pb-2">
-                                        <label
-                                            class="block text-xs font-medium text-gray-700"
-                                        >
-                                            Address
-                                        </label>
-                                        <Field
-                                            type="text"
-                                            name="address"
-                                            placeholder="Address"
-                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                            disabled={buttonDisable}
-                                        />
-                                    </div>
-                                    <div className="pb-2">
-                                        <label
-                                            class="block text-xs font-medium text-gray-700"
-                                        >
-                                            Booking Start Date
-                                        </label>
-                                        <Field
-                                            type="date"
-                                            name="startDate"
-                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                            disabled={buttonDisable}
-                                        />
-                                    </div>
-                                    <div className="pb-2">
-                                        <label
-                                            class="block text-xs font-medium text-gray-700"
-                                        >
-                                            Booking End Date
-                                        </label>
-                                        <Field
-                                            type="date"
-                                            name="endDate"
-                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                            disabled={buttonDisable}
-                                        />
-                                    </div>
-                                    <div className="mt-2">
-                                        <button type='submit'
-                                            disabled={buttonDisable}
-                                            className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
-                                            Next
-                                        </button>
-                                    </div>
-                                </Form>
-                            </Formik>
+                                                <div className="pb-2 w-full flex justify-between">
+                                                    <div>
+                                                        <label
+                                                            class="block text-xs font-medium text-gray-700"
+                                                        >
+                                                            Phone *
+                                                        </label>
+                                                        <Field
+                                                            type="phone"
+                                                            name="phone"
+                                                            placeholder="Phone"
+                                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <label
+                                                            class="block text-xs font-medium text-gray-700"
+                                                        >
+                                                            Location
+                                                        </label>
+                                                        <Field
+                                                            type="text"
+                                                            name="location"
+                                                            placeholder="Location"
+                                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                        />
+                                                    </div>
+                                                </div>
 
+                                                <div className="pb-2">
+                                                    <label
+                                                        class="block text-xs font-medium text-gray-700"
+                                                    >
+                                                        Hours *
+                                                    </label>
+                                                    <Field
+                                                        type="number"
+                                                        name="hours"
+                                                        placeholder="Hours"
+                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                    />
+                                                </div>
+
+                                                <div className="pb-2">
+                                                    <label
+                                                        class="block text-xs font-medium text-gray-700"
+                                                    >
+                                                        Address *
+                                                    </label>
+                                                    <Field
+                                                        type="text"
+                                                        name="address"
+                                                        placeholder="Address"
+                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                    />
+                                                </div>
+
+                                                <div className="pb-2">
+                                                    <label
+                                                        class="block text-xs font-medium text-gray-700"
+                                                    >
+                                                        Booking Start Date *
+                                                    </label>
+                                                    <Field
+                                                        type="date"
+                                                        name="startDate"
+                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                    />
+                                                </div>
+
+                                                <div className="pb-2">
+                                                    <label
+                                                        class="block text-xs font-medium text-gray-700"
+                                                    >
+                                                        Booking End Date *
+                                                    </label>
+                                                    <Field
+                                                        type="date"
+                                                        name="endDate"
+                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                    />
+                                                </div>
+                                                {
+                                                    errors.name && <div className='text-end'>{errors.name}</div>
+                                                }
+                                                {
+                                                    errors.phone && <div className='text-end'>{errors.phone}</div>
+                                                }
+                                                {
+                                                    errors.hours && <div className='text-end'>{errors.hours}</div>
+                                                }
+                                                {
+                                                    errors.address && <div className='text-end'>{errors.address}</div>
+                                                }
+                                                {
+                                                    errors.startDate && <div className='text-end'>{errors.startDate}</div>
+                                                }
+                                                {
+                                                    errors.endDate && <div className='text-end'>{errors.endDate}</div>
+                                                }
+                                                <div className="mt-2">
+                                                    <button type='submit'
+                                                        className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </Form>
+                                        }
+                                        }
+
+                                    </Formik>
+                                    :
+                                    <div>
+                                        <PaymentForm userInfo={userInfo} />
+                                    </div>
+                            }
                         </div>
                     </div>
                 </div>

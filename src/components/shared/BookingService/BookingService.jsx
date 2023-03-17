@@ -19,39 +19,6 @@ export default function BookingService() {
     const filteredCar = car.filter(data => data.id == routeId)[0]
     const filteredBus = bus.filter(data => data.id == routeId)[0]
     const filteredTruck = truck.filter(data => data.id == routeId)[0]
-    // constrol state
-    const [buttonDisable, setButtonDisable] = useState(false)
-    const [userInfo, setUserInfo] = useState({})
-    const [serviceData, setServiceData] = useState({})
-    // constrols useeffect
-    // useEffect(() => {
-    //     if (filteredCar) {
-    //         console.log("Car")
-    //         setServiceData(filteredCar)
-    //     }
-    //     if (filteredBus) {
-    //         console.log("Bus")
-    //         setServiceData(filteredBus)
-    //     }
-    //     if (filteredTruck) {
-    //         console.log("Truck")
-    //         setServiceData(filteredTruck)
-    //     }
-
-    // }, [])
-
-    // const handleSubmit = (values) => {
-    //     console.log("Values", values)
-    //     setUserInfo(values)
-    //     setButtonDisable(true)
-    //     sessionStorageStore("user-info", { ...values, vehicleId: routeId })
-    // }
-
-    // logs ref
-    // console.log("serviceName", serviceName)
-    // console.log("routeId", routeId)
-    // console.log("car", car)
-    // console.log("filteredCar", filteredCar)
 
     return (
 
@@ -61,8 +28,23 @@ export default function BookingService() {
                 filteredCar &&
                 <CheckoutPage serviceData={filteredCar} key={Math.random()} routeId={routeId} />
             }
-            <Footer />
             {
+                serviceName == 'bus' &&
+                filteredBus &&
+                <CheckoutPage serviceData={filteredBus} key={Math.random()} routeId={routeId} />
+            }
+            {
+                serviceName == 'truck' &&
+                filteredTruck &&
+                <CheckoutPage serviceData={filteredTruck} key={Math.random()} routeId={routeId} />
+            }
+            <Footer />
+        </div>
+    )
+}
+
+
+
                 //    <div class="grid grid-cols-3 100vh" style={{ height: '100vh' }}>
                 //         <div className='flex items-center justify-center w-100 h-100 bg-white'>
 
@@ -206,9 +188,3 @@ export default function BookingService() {
                 //             <PaymentForm userInfo={userInfo} />
                 //         </div>
                 //     </div>
-            }
-
-        </div>
-
-    )
-}

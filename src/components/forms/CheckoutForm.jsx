@@ -7,6 +7,8 @@ import {
 } from "@stripe/react-stripe-js";
 
 import '../styles/FormStyle/PaymentFormStyle/paymentStyle.css'
+import { sessionStorageGet } from "../functions/commonFunctions";
+import Loader from "../shared/Loader/Loader";
 
 
 export default function CheckoutForm({ userInfo }) {
@@ -16,9 +18,11 @@ export default function CheckoutForm({ userInfo }) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(sessionStorageGet("user-info"))
   useEffect(() => {
+    setIsLoading(true);
     if (!stripe) {
+      setIsLoading(false);
       return;
     }
 
@@ -27,6 +31,7 @@ export default function CheckoutForm({ userInfo }) {
     );
 
     if (!clientSecret) {
+      setIsLoading(false)
       return;
     }
 
@@ -46,21 +51,24 @@ export default function CheckoutForm({ userInfo }) {
           break;
       }
     });
+
+    setIsLoading(false)
   }, [stripe]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     console.log("Payment Successfully", userInfo)
     console.log("userInfo", userInfo)
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       console.log("Payment !stripe || !elements")
+      setIsLoading(false)
       return;
     }
 
     // setIsLoading(true);
-
     await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -96,19 +104,25 @@ export default function CheckoutForm({ userInfo }) {
   }
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <LinkAuthenticationElement
-        id="link-authentication-element"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit" className="payButton">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
-      </button>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
-    </form>
+    <div>
+      {
+        // isLoading ? <Loader /> :
+        <form id="payment-form" onSubmit={handleSubmit}>
+          <LinkAuthenticationElement
+            id="link-authentication-element"
+            onChange={(e) => setEmail(e.target.value)}
+            email={email}
+          />
+          <PaymentElement id="payment-element" options={paymentElementOptions} />
+          <button disabled={isLoading || !stripe || !elements} id="submit" className="payButton">
+            <span id="button-text">
+              {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+            </span>
+          </button>
+          {/* Show any error or success messages */}
+          {message && <div id="payment-message">{message}</div>}
+        </form>
+      }
+    </div>
   );
 }
