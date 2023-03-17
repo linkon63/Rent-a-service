@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field, Form, Formik } from 'formik'
-import { sessionStorageStore } from '../../functions/commonFunctions';
+import { sessionStorageGet, sessionStorageStore } from '../../functions/commonFunctions';
 import { checkoutForm } from '../../validations/validationSchema';
 import PaymentForm from '../../forms/PaymentForm';
 
-export default function CheckoutPage({ serviceData, routeId }) {
+export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // control state
     const [buttonDisable, setButtonDisable] = useState(false)
+    // const [initialValues, setInitialValues] = useState({
+    //     name: '', phone: '', location: '', hours: '', address: '', startDate: "", endDate: ""
+    // })
     const [userInfo, setUserInfo] = useState({})
     const [sectionHide, setSectionHide] = useState(false)
 
+    // control functions
     const handleSubmit = (values) => {
         console.log("Values", values)
         setUserInfo(values)
@@ -106,14 +110,7 @@ export default function CheckoutPage({ serviceData, routeId }) {
                             {
                                 !sectionHide ?
                                     <Formik
-                                        initialValues={{
-                                            name: '',
-                                            phone: '',
-                                            location: '',
-                                            hours: '',
-                                            address: '',
-                                            date: ""
-                                        }}
+                                        initialValues={{ ...initialValues }}
                                         validationSchema={checkoutForm}
                                         onSubmit={async (values) => {
                                             handleSubmit(values)

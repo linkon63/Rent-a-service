@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
 import PaymentForm from '../../forms/PaymentForm'
-import { sessionStorageStore } from '../../functions/commonFunctions'
+import { sessionStorageGet, sessionStorageStore } from '../../functions/commonFunctions'
 import Footer from '../Footer/Footer'
 import CheckoutPage from './CheckoutPage'
 
@@ -20,23 +20,36 @@ export default function BookingService() {
     const filteredBus = bus.filter(data => data.id == routeId)[0]
     const filteredTruck = truck.filter(data => data.id == routeId)[0]
 
+    const [initialValues, setInitialValues] = useState({
+        name: '', phone: '', location: '', hours: '', address: '', startDate: "", endDate: ""
+    })
+
+    // control useeffect
+    useEffect(() => {
+        const userInfo = sessionStorageGet("user-info")
+        if (userInfo) {
+            setInitialValues(userInfo)
+            console.log("⚓ user info", userInfo)
+        }
+    }, [])
+
     return (
 
         <div className='w-100'>
             {
                 serviceName == 'car' &&
                 filteredCar &&
-                <CheckoutPage serviceData={filteredCar} key={Math.random()} routeId={routeId} />
+                <CheckoutPage serviceData={filteredCar} key={Math.random()} routeId={routeId} initialValues={initialValues} />
             }
             {
                 serviceName == 'bus' &&
                 filteredBus &&
-                <CheckoutPage serviceData={filteredBus} key={Math.random()} routeId={routeId} />
+                <CheckoutPage serviceData={filteredBus} key={Math.random()} routeId={routeId} initialValues={initialValues} />
             }
             {
                 serviceName == 'truck' &&
                 filteredTruck &&
-                <CheckoutPage serviceData={filteredTruck} key={Math.random()} routeId={routeId} />
+                <CheckoutPage serviceData={filteredTruck} key={Math.random()} routeId={routeId} initialValues={initialValues} />
             }
             <Footer />
         </div>
