@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
 import Gauges from '../../shared/Gauges/Gauges'
@@ -8,10 +9,27 @@ const busData = allBusData
 const truckData = allTrucksData
 
 export default function CarsServicePage() {
+    const [servicesData, setServicesData] = useState([])
+
     let { pathname } = useLocation();
     // console.log("location", pathname)
     const routeId = pathname.split('/')[2]
     console.log("routeId", routeId)
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/serviceData/?id=${routeId}`)
+            .then(function (response) {
+                // handle success
+                console.log("backend res", response.data);
+            })
+            .catch(function (error) {
+                // handle error
+            })
+            .finally(function () {
+                // always executed
+            });
+    }, [])
+
     return (
         <>
             <div className=" flex justify-center bg-white">

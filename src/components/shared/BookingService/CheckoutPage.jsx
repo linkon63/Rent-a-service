@@ -3,6 +3,7 @@ import { Field, Form, Formik } from 'formik'
 import { sessionStorageGet, sessionStorageStore } from '../../functions/commonFunctions';
 import { checkoutForm } from '../../validations/validationSchema';
 import PaymentForm from '../../forms/PaymentForm';
+import axios from 'axios';
 
 export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // control state
@@ -18,8 +19,31 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
         console.log("Values", values)
         setUserInfo(values)
         sessionStorageStore("user-info", { ...values, vehicleId: routeId })
-        setSectionHide(true)
-        // setButtonDisable(true)
+        // setSectionHide(true) // future it will comment if payment not work
+
+
+        // TODO: Comment this out if payment not working 
+        // send data to the db if payment method is not work
+        // const userData = sessionStorageGet("user-info")
+        // const userEmail = sessionStorageGet("user-email")
+
+        // if (userData) {
+        //     const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random() }
+        //     console.log("Post API", bookingInfo)
+
+        //     axios.post('http://localhost:8080/bookingService', {
+        //         ...bookingInfo
+        //     })
+        //         .then(function (response) {
+        //             console.log(response);
+        //             alert("Check your booking at Dashboard")
+        //             window.location.replace("http://localhost:3000/admin/booked")
+        //         })
+        //         .catch(function (error) {
+        //             console.log(error);
+        //         });
+        // }
+
     }
     return (
 
@@ -112,6 +136,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                     <Formik
                                         initialValues={{ ...initialValues }}
                                         validationSchema={checkoutForm}
+                                        validateOnChange={true}
                                         onSubmit={async (values) => {
                                             handleSubmit(values)
                                             console.log("Submit form")
@@ -119,6 +144,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                     >
                                         {({ errors }) => {
                                             const first = Object.keys(errors)[0];
+                                            console.log("Formik Error", errors)
                                             return <Form>
                                                 <div className="pb-2">
                                                     <label
@@ -203,8 +229,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                         className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
                                                     />
                                                 </div>
-
-                                                <div className="pb-2">
+                                                {/* <div className="pb-2">
                                                     <label
                                                         class="block text-xs font-medium text-gray-700"
                                                     >
@@ -215,7 +240,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                         name="endDate"
                                                         className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
                                                     />
-                                                </div>
+                                                </div> */}
                                                 {
                                                     errors.name && <div className='text-end'>{errors.name}</div>
                                                 }
@@ -230,9 +255,6 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                 }
                                                 {
                                                     errors.startDate && <div className='text-end'>{errors.startDate}</div>
-                                                }
-                                                {
-                                                    errors.endDate && <div className='text-end'>{errors.endDate}</div>
                                                 }
                                                 <div className="mt-2">
                                                     <button type='submit'

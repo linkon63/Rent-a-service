@@ -10,10 +10,12 @@ export const checkoutForm = () =>
             .strict(false)
             .trim()
             .required(`Phone is require *`),
-        hours: Yup.string()
+        hours: Yup.number()
             .strict(false)
-            .trim()
-            .required(`Hours is require *`),
+            .required(`Hours is require *`)
+            .min(2, `Should more then 2 hours`)
+            .max(24, `not more then 1 day`)
+            .typeError("Should be integer number"),
         address: Yup.string()
             .strict(false)
             .trim()
@@ -22,8 +24,5 @@ export const checkoutForm = () =>
             .strict(false)
             .trim()
             .required(`Booking Start Date is require *`),
-        endDate: Yup.string()
-            .strict(false)
-            .trim()
-            .required(`Booking End Date is require *`),
+
     });

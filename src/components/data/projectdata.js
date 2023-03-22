@@ -39,7 +39,19 @@ export const allServiceData = [
     },
 ]
 
+// Slide Image Link
+// https://i.ibb.co/wNSsP39/car1.jpg
+// https://i.ibb.co/NxRnXz3/car2.jpg
+// https://i.ibb.co/b1h872f/car3.jpg
+// https://i.ibb.co/n6grVPZ/car4.jpg
+// https://i.ibb.co/bvyKZzk/car5.jpg
+
 export const allCarsData = [
+
+    // https://i.ibb.co/VtYXV90/c1.png
+    // https://i.ibb.co/rFBmfxG/c2.png
+    // https://i.ibb.co/m4kCbxW/c3.png
+
     {
         id: 1,
         name: "Ferrari",
@@ -64,6 +76,10 @@ export const allCarsData = [
 ]
 
 export const allBusData = [
+    // https://i.ibb.co/VJcFwSx/bus1.png
+    // https://i.ibb.co/0nKRM3X/bus2.png
+    // https://i.ibb.co/pbvR9vV/bus3.png
+
     {
         id: 201,
         name: "Long Bus",
@@ -87,6 +103,9 @@ export const allBusData = [
     },
 ]
 export const allTrucksData = [
+    // https://i.ibb.co/KNSm0tZ/truck1.png
+    // https://i.ibb.co/Bf2Qjyh/truck2.png
+    // https://i.ibb.co/vY6bZhL/truck3.png
     {
         id: 301,
         name: "Pickup",
