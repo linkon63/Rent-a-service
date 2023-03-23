@@ -58,7 +58,7 @@ export default function BookingService() {
 
 
 
-                //    <div class="grid grid-cols-3 100vh" style={{ height: '100vh' }}>
+                //    <div className="grid grid-cols-3 100vh" style={{ height: '100vh' }}>
                 //         <div className='flex items-center justify-center w-100 h-100 bg-white'>
 
                 //             {

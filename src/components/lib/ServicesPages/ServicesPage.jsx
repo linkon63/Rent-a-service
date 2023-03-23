@@ -10,24 +10,42 @@ const truckData = allTrucksData
 
 export default function CarsServicePage() {
     const [servicesData, setServicesData] = useState([])
-
+    const [bookingName, setBookingName] = useState('')
     let { pathname } = useLocation();
     // console.log("location", pathname)
     const routeId = pathname.split('/')[2]
     console.log("routeId", routeId)
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/serviceData/?id=${routeId}`)
-            .then(function (response) {
-                // handle success
-                console.log("backend res", response.data);
-            })
-            .catch(function (error) {
-                // handle error
-            })
-            .finally(function () {
-                // always executed
-            });
+        try {
+            if (routeId == '101') {
+                setBookingName('car')
+                console.log("bookingName car found")
+            } else if (routeId == '102') {
+                setBookingName('bus')
+                console.log("bookingName bus found")
+            } else if (routeId == '103') {
+                setBookingName('truck')
+                console.log("bookingName truck found")
+            } else {
+                console.log("bookingName id not found")
+            }
+            // calling api
+            axios.get(`http://localhost:8080/serviceData/?id=${routeId}`)
+                .then(function (response) {
+                    // handle success
+                    console.log("backend res", response.data);
+                    setServicesData(response.data)
+                })
+                .catch(function (error) {
+                    // handle error
+                })
+                .finally(function () {
+                    // always executed
+                });
+        } catch (error) {
+            console.log("Calling api error", error)
+        }
     }, [])
 
     return (
@@ -35,12 +53,12 @@ export default function CarsServicePage() {
             <div className=" flex justify-center bg-white">
                 <div className='container'>
                     <div>
-                        <div class="mb-2 text-center bg-white border mt-3">
-                            <h2 class="text-center text-2xl text-gray-900 font-bold md:text-4xl p-2">Take Our Services</h2>
+                        <div className="mb-2 text-center bg-white border mt-3">
+                            <h2 className="text-center text-2xl text-gray-900 font-bold md:text-4xl p-2">Take Our Services</h2>
                         </div>
 
                         <div className='mt-2 border bg-zinc-900'>
-                            <div class="grid grid-cols-2 content-center gap-4">
+                            <div className="grid grid-cols-2 content-center gap-4">
                                 <div className=''>
                                     <div className='text-center'>
                                         <div>
@@ -52,65 +70,82 @@ export default function CarsServicePage() {
 
                                     <div className="grid  grid-cols-3 gap-4 pt-2" >
                                         {
-                                            routeId == '101' &&
-                                            carsData &&
-                                            carsData.map((data) => (
+                                            servicesData &&
+                                            servicesData.length &&
+                                            servicesData.map((data) => (
                                                 <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={data.id}>
                                                     <img src={data.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                                                     <div className="flex flex-col justify-between p-6 space-y-8">
                                                         <div className="space-y-2">
                                                             <h2 className="text-3xl font-semibold tracking-wide">{data.name}</h2>
-                                                            <p className="dark:text-gray-100">{data.describe}</p>
+                                                            <p className="dark:text-gray-100">{data.description}</p>
                                                         </div>
                                                         <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
-                                                            <Link to={`/bookingService/car/${data.id}`}>Book Now</Link>
+                                                            <Link to={`/bookingService/${bookingName}/${data.id}`}>Book Now</Link>
                                                         </button>
+                                                        <p>{`/bookingService/${bookingName}/${data.id}`}</p>
                                                     </div>
                                                 </div>
                                             ))
+                                            // routeId == '101' &&
+                                            // carsData &&
+                                            // carsData.map((data) => (
+                                            //     <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={data.id}>
+                                            //         <img src={data.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+                                            //         <div className="flex flex-col justify-between p-6 space-y-8">
+                                            //             <div className="space-y-2">
+                                            //                 <h2 className="text-3xl font-semibold tracking-wide">{data.name}</h2>
+                                            //                 <p className="dark:text-gray-100">{data.describe}</p>
+                                            //             </div>
+                                            //             <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
+                                            //                 <Link to={`/bookingService/car/${data.id}`}>Book Now</Link>
+                                            //             </button>
+                                            //         </div>
+                                            //     </div>
+                                            // ))
                                         }
                                         {
-                                            routeId == '102' &&
-                                            busData &&
-                                            busData.map((data) => (
-                                                <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={data.id}>
-                                                    <img src={data.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
-                                                    <div className="flex flex-col justify-between p-6 space-y-8">
-                                                        <div className="space-y-2">
-                                                            <h2 className="text-3xl font-semibold tracking-wide">{data.name}</h2>
-                                                            <p className="dark:text-gray-100">{data.describe}</p>
-                                                        </div>
-                                                        <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
-                                                            <Link to={`/bookingService/bus/${data.id}`}>Book Now</Link>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            ))
+                                            // routeId == '102' &&
+                                            // busData &&
+                                            // busData.map((data) => (
+                                            //     <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={data.id}>
+                                            //         <img src={data.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+                                            //         <div className="flex flex-col justify-between p-6 space-y-8">
+                                            //             <div className="space-y-2">
+                                            //                 <h2 className="text-3xl font-semibold tracking-wide">{data.name}</h2>
+                                            //                 <p className="dark:text-gray-100">{data.describe}</p>
+                                            //             </div>
+                                            //             <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
+                                            //                 <Link to={`/bookingService/bus/${data.id}`}>Book Now</Link>
+                                            //             </button>
+                                            //         </div>
+                                            //     </div>
+                                            // ))
                                         }
                                         {
-                                            routeId == '103' &&
-                                            truckData &&
-                                            truckData.map((data) => (
-                                                <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={data.id}>
-                                                    <img src={data.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
-                                                    <div className="flex flex-col justify-between p-6 space-y-8">
-                                                        <div className="space-y-2">
-                                                            <h2 className="text-3xl font-semibold tracking-wide">{data.name}</h2>
-                                                            <p className="dark:text-gray-100">{data.describe}</p>
-                                                        </div>
-                                                        <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
-                                                            <Link to={`/bookingService/truck/${data.id}`}>Book Now</Link>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            ))
+                                            // routeId == '103' &&
+                                            // truckData &&
+                                            // truckData.map((data) => (
+                                            //     <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100" key={data.id}>
+                                            //         <img src={data.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+                                            //         <div className="flex flex-col justify-between p-6 space-y-8">
+                                            //             <div className="space-y-2">
+                                            //                 <h2 className="text-3xl font-semibold tracking-wide">{data.name}</h2>
+                                            //                 <p className="dark:text-gray-100">{data.describe}</p>
+                                            //             </div>
+                                            //             <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
+                                            //                 <Link to={`/bookingService/truck/${data.id}`}>Book Now</Link>
+                                            //             </button>
+                                            //         </div>
+                                            //     </div>
+                                            // ))
                                         }
                                     </div>
                                 </div>
                             </div>
                             {/* Step of process booked a car */}
                         </div >
-                        <div class="grid grid-cols-2 mt-5">
+                        <div className="grid grid-cols-2 mt-5">
                             <section className="dark:bg-gray-800 dark:text-gray-100">
                                 <div className="container max-w-5xl px-4 py-12 mx-auto">
                                     <div className="grid gap-4 mx-4 sm:grid-cols-12">

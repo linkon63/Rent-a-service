@@ -8,19 +8,19 @@ const serviceData = allServiceData;
 const ServiceSection = () => {
     return (
         <div className='mt-5'>
-            <div class="mb-2 text-center bg-white">
-                <h2 class="text-center text-2xl text-gray-900 font-bold md:text-4xl p-2">Take Our Services</h2>
+            <div className="mb-2 text-center bg-white">
+                <h2 className="text-center text-2xl text-gray-900 font-bold md:text-4xl p-2">Take Our Services</h2>
             </div>
 
             <div className="grid grid-cols-3 gap-4">
                 {
                     serviceData &&
                     serviceData.map(service => (
-                        <Link to={`/services/${service.id}`} class="group relative block overflow-hidden" >
+                        <Link to={`/services/${service.id}`} className="group relative block overflow-hidden" >
                             <button
-                                class="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                                className="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
                             >
-                                <span class="sr-only">Wishlist</span>
+                                <span className="sr-only">Wishlist</span>
 
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const ServiceSection = () => {
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="h-4 w-4"
+                                    className="h-4 w-4"
                                 >
                                     <path
                                         stroke-linecap="round"
@@ -41,26 +41,26 @@ const ServiceSection = () => {
                             <img
                                 src={service.image}
                                 alt=""
-                                class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
                             />
 
-                            <div class="relative border border-gray-100 bg-white p-6">
+                            <div className="relative border border-gray-100 bg-white p-6">
                                 <span
-                                    class="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
+                                    className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
                                 >
                                     New
                                 </span>
-                                <h3 class="mt-4 text-lg font-medium text-gray-900">{service.name}</h3>
-                                <p class="mt-1.5 text-sm text-gray-700">{service.price}</p>
+                                <h3 className="mt-4 text-lg font-medium text-gray-900">{service.name}</h3>
+                                <p className="mt-1.5 text-sm text-gray-700">{service.price}</p>
                             </div>
                         </Link>
                     ))
                 }
-                {/* <Link to='/carsServices' class="group relative block overflow-hidden" >
+                {/* <Link to='/carsServices' className="group relative block overflow-hidden" >
                     <button
-                        class="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                        className="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
                     >
-                        <span class="sr-only">Wishlist</span>
+                        <span className="sr-only">Wishlist</span>
 
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const ServiceSection = () => {
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="h-4 w-4"
+                            className="h-4 w-4"
                         >
                             <path
                                 stroke-linecap="round"
@@ -81,25 +81,25 @@ const ServiceSection = () => {
                     <img
                         src="https://i.ibb.co/p0sjp3X/13841402-2010-i123-005-car-headlights-AD-composition.jpg"
                         alt=""
-                        class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                        className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
                     />
 
-                    <div class="relative border border-gray-100 bg-white p-6">
+                    <div className="relative border border-gray-100 bg-white p-6">
                         <span
-                            class="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
+                            className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
                         >
                             New
                         </span>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">CARS</h3>
-                        <p class="mt-1.5 text-sm text-gray-700">$14.99</p>
+                        <h3 className="mt-4 text-lg font-medium text-gray-900">CARS</h3>
+                        <p className="mt-1.5 text-sm text-gray-700">$14.99</p>
                     </div>
                 </Link>
 
-                <Link to='/carsServices' class="group relative block overflow-hidden" >
+                <Link to='/carsServices' className="group relative block overflow-hidden" >
                     <button
-                        class="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                        className="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
                     >
-                        <span class="sr-only">Wishlist</span>
+                        <span className="sr-only">Wishlist</span>
 
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ const ServiceSection = () => {
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="h-4 w-4"
+                            className="h-4 w-4"
                         >
                             <path
                                 stroke-linecap="round"
@@ -120,25 +120,25 @@ const ServiceSection = () => {
                     <img
                         src="https://i.ibb.co/k0b3czV/full-shot-disabled-man-near-bus.jpg"
                         alt=""
-                        class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                        className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
                     />
 
-                    <div class="relative border border-gray-100 bg-white p-6">
+                    <div className="relative border border-gray-100 bg-white p-6">
                         <span
-                            class="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
+                            className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
                         >
                             New
                         </span>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">Bus</h3>
-                        <p class="mt-1.5 text-sm text-gray-700">$14.99</p>
+                        <h3 className="mt-4 text-lg font-medium text-gray-900">Bus</h3>
+                        <p className="mt-1.5 text-sm text-gray-700">$14.99</p>
                     </div>
                 </Link>
 
-                <Link to='/carsServices' class="group relative block overflow-hidden" >
+                <Link to='/carsServices' className="group relative block overflow-hidden" >
                     <button
-                        class="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+                        className="absolute right-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
                     >
-                        <span class="sr-only">Wishlist</span>
+                        <span className="sr-only">Wishlist</span>
 
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ const ServiceSection = () => {
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="h-4 w-4"
+                            className="h-4 w-4"
                         >
                             <path
                                 stroke-linecap="round"
@@ -159,17 +159,17 @@ const ServiceSection = () => {
                     <img
                         src="https://i.ibb.co/kcV4PKQ/truck-long-vehicle-ready-delivering-transport.jpg"
                         alt=""
-                        class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+                        className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
                     />
 
-                    <div class="relative border border-gray-100 bg-white p-6">
+                    <div className="relative border border-gray-100 bg-white p-6">
                         <span
-                            class="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
+                            className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium"
                         >
                             New
                         </span>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">Trucks</h3>
-                        <p class="mt-1.5 text-sm text-gray-700">$14.99</p>
+                        <h3 className="mt-4 text-lg font-medium text-gray-900">Trucks</h3>
+                        <p className="mt-1.5 text-sm text-gray-700">$14.99</p>
                     </div>
                 </Link> */}
 
