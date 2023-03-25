@@ -7,12 +7,33 @@ import axios from 'axios';
 
 export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // control state
-    const [buttonDisable, setButtonDisable] = useState(false)
+    const [controlService, setControlService] = useState({})
+
     // const [initialValues, setInitialValues] = useState({
     //     name: '', phone: '', location: '', hours: '', address: '', startDate: "", endDate: ""
     // })
     const [userInfo, setUserInfo] = useState({})
     const [sectionHide, setSectionHide] = useState(false)
+
+    useEffect(() => {
+        const date = new Date().toLocaleDateString()
+        const replateDate = date.replaceAll("/", "-")
+        console.log("date local string", date.replaceAll("/", "-"))
+        console.log("date local routeId", routeId)
+        axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&date=${replateDate}`)
+            .then(function (response) {
+                // handle success
+                console.log("backend res", response.data);
+                setControlService(response.data)
+            })
+            .catch(function (error) {
+                // handle error
+                console.log("error", error);
+            })
+            .finally(function () {
+                // always executed
+            });
+    }, [])
 
     // control functions
     const handleSubmit = (values) => {
@@ -24,27 +45,30 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
 
         // TODO: Comment this out if payment not working 
         // send data to the db if payment method is not work
-        // const userData = sessionStorageGet("user-info")
-        // const userEmail = sessionStorageGet("user-email")
+        const userData = sessionStorageGet("user-info")
+        const userEmail = sessionStorageGet("user-email")
 
-        // if (userData) {
-        //     const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random() }
-        //     console.log("Post API", bookingInfo)
+        if (userData) {
+            const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random() }
+            console.log("Post API", bookingInfo)
 
-        //     axios.post('http://localhost:8080/bookingService', {
-        //         ...bookingInfo
-        //     })
-        //         .then(function (response) {
-        //             console.log(response);
-        //             alert("Check your booking at Dashboard")
-        //             window.location.replace("http://localhost:3000/admin/booked")
-        //         })
-        //         .catch(function (error) {
-        //             console.log(error);
-        //         });
-        // }
+            axios.post('http://localhost:8080/bookingService', {
+                ...bookingInfo
+            })
+                .then(function (response) {
+                    console.log(response);
+                    alert("Check your booking at Dashboard")
+                    window.location.replace("http://localhost:3000/admin/booked")
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
 
     }
+
+
+
     return (
 
         <div className='mt-2 flex justify-center'>
@@ -132,104 +156,113 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                     <div className="bg-white py-12 md:py-24">
                         <div className="px-4 lg:px-8">
                             {
+                                // controlService.status === false ?
+                                //     <div>
+                                //         <h2>You cant add today any booking of this service Please choose another one</h2>
+                                //     </div>
+                            }
+                            {
                                 !sectionHide ?
-                                    <Formik
-                                        initialValues={{ ...initialValues }}
-                                        validationSchema={checkoutForm}
-                                        validateOnChange={true}
-                                        onSubmit={async (values) => {
-                                            handleSubmit(values)
-                                            console.log("Submit form")
-                                        }}
-                                    >
-                                        {({ errors }) => {
-                                            const first = Object.keys(errors)[0];
-                                            console.log("Formik Error", errors)
-                                            return <Form>
-                                                <div className="pb-2">
-                                                    <label
-                                                        className="block text-xs font-medium text-gray-700"
-                                                    >
-                                                        Name *
-                                                    </label>
-                                                    <Field
-                                                        type="text"
-                                                        name="name"
-                                                        placeholder="Name"
-                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
-                                                    />
-                                                </div>
+                                    (controlService.status === false) ?
+                                        < Formik
+                                            initialValues={{ ...initialValues }}
+                                            validationSchema={checkoutForm}
+                                            validateOnChange={true}
+                                            onSubmit={async (values) => {
+                                                handleSubmit(values)
+                                                console.log("Submit form")
+                                            }}
+                                        >
+                                            {({ errors }) => {
+                                                const first = Object.keys(errors)[0];
+                                                console.log("Formik Error", errors)
+                                                return <div>
 
-                                                <div className="pb-2 w-full flex justify-between">
-                                                    <div>
-                                                        <label
-                                                            className="block text-xs font-medium text-gray-700"
-                                                        >
-                                                            Phone *
-                                                        </label>
-                                                        <Field
-                                                            type="phone"
-                                                            name="phone"
-                                                            placeholder="Phone"
-                                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <label
-                                                            className="block text-xs font-medium text-gray-700"
-                                                        >
-                                                            Location
-                                                        </label>
-                                                        <Field
-                                                            type="text"
-                                                            name="location"
-                                                            placeholder="Location"
-                                                            className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                                        />
-                                                    </div>
-                                                </div>
+                                                    <Form>
+                                                        <div className="pb-2">
+                                                            <label
+                                                                className="block text-xs font-medium text-gray-700"
+                                                            >
+                                                                Name *
+                                                            </label>
+                                                            <Field
+                                                                type="text"
+                                                                name="name"
+                                                                placeholder="Name"
+                                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
+                                                            />
+                                                        </div>
 
-                                                <div className="pb-2">
-                                                    <label
-                                                        className="block text-xs font-medium text-gray-700"
-                                                    >
-                                                        Hours *
-                                                    </label>
-                                                    <Field
-                                                        type="number"
-                                                        name="hours"
-                                                        placeholder="Hours"
-                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                                    />
-                                                </div>
+                                                        <div className="pb-2 w-full flex justify-between">
+                                                            <div>
+                                                                <label
+                                                                    className="block text-xs font-medium text-gray-700"
+                                                                >
+                                                                    Phone *
+                                                                </label>
+                                                                <Field
+                                                                    type="phone"
+                                                                    name="phone"
+                                                                    placeholder="Phone"
+                                                                    className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 px-3"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <label
+                                                                    className="block text-xs font-medium text-gray-700"
+                                                                >
+                                                                    Location
+                                                                </label>
+                                                                <Field
+                                                                    type="text"
+                                                                    name="location"
+                                                                    placeholder="Location"
+                                                                    className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                                />
+                                                            </div>
+                                                        </div>
 
-                                                <div className="pb-2">
-                                                    <label
-                                                        className="block text-xs font-medium text-gray-700"
-                                                    >
-                                                        Address *
-                                                    </label>
-                                                    <Field
-                                                        type="text"
-                                                        name="address"
-                                                        placeholder="Address"
-                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                                    />
-                                                </div>
+                                                        <div className="pb-2">
+                                                            <label
+                                                                className="block text-xs font-medium text-gray-700"
+                                                            >
+                                                                Hours *
+                                                            </label>
+                                                            <Field
+                                                                type="number"
+                                                                name="hours"
+                                                                placeholder="Hours"
+                                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                            />
+                                                        </div>
 
-                                                <div className="pb-2">
-                                                    <label
-                                                        className="block text-xs font-medium text-gray-700"
-                                                    >
-                                                        Booking Start Date *
-                                                    </label>
-                                                    <Field
-                                                        type="date"
-                                                        name="startDate"
-                                                        className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
-                                                    />
-                                                </div>
-                                                {/* <div className="pb-2">
+                                                        <div className="pb-2">
+                                                            <label
+                                                                className="block text-xs font-medium text-gray-700"
+                                                            >
+                                                                Address *
+                                                            </label>
+                                                            <Field
+                                                                type="text"
+                                                                name="address"
+                                                                placeholder="Address"
+                                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                            />
+                                                        </div>
+
+                                                        <div className="pb-2">
+                                                            <label
+                                                                className="block text-xs font-medium text-gray-700"
+                                                            >
+                                                                Booking Start Date *
+                                                            </label>
+                                                            <Field
+                                                                type="date"
+                                                                name="startDate"
+                                                                className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                            />
+                                                        </div>
+                                                        {/* <div className="pb-2">
                                                     <label
                                                         className="block text-xs font-medium text-gray-700"
                                                     >
@@ -241,32 +274,38 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                         className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
                                                     />
                                                 </div> */}
-                                                {
-                                                    errors.name && <div className='text-end'>{errors.name}</div>
-                                                }
-                                                {
-                                                    errors.phone && <div className='text-end'>{errors.phone}</div>
-                                                }
-                                                {
-                                                    errors.hours && <div className='text-end'>{errors.hours}</div>
-                                                }
-                                                {
-                                                    errors.address && <div className='text-end'>{errors.address}</div>
-                                                }
-                                                {
-                                                    errors.startDate && <div className='text-end'>{errors.startDate}</div>
-                                                }
-                                                <div className="mt-2">
-                                                    <button type='submit'
-                                                        className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
-                                                        Next
-                                                    </button>
-                                                </div>
-                                            </Form>
-                                        }
-                                        }
+                                                        {
+                                                            errors.name && <div className='text-end'>{errors.name}</div>
+                                                        }
+                                                        {
+                                                            errors.phone && <div className='text-end'>{errors.phone}</div>
+                                                        }
+                                                        {
+                                                            errors.hours && <div className='text-end'>{errors.hours}</div>
+                                                        }
+                                                        {
+                                                            errors.address && <div className='text-end'>{errors.address}</div>
+                                                        }
+                                                        {
+                                                            errors.startDate && <div className='text-end'>{errors.startDate}</div>
+                                                        }
+                                                        <div className="mt-2">
+                                                            <button type='submit'
+                                                                className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
+                                                                Next
+                                                            </button>
+                                                        </div>
+                                                    </Form>
 
-                                    </Formik>
+                                                </div>
+                                            }
+                                            }
+
+                                        </Formik>
+                                        :
+                                        <div>
+                                            <h2>You cant add today any booking of this service Please choose another one</h2>
+                                        </div>
                                     :
                                     <div>
                                         <PaymentForm userInfo={userInfo} />
@@ -275,8 +314,8 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
 
 
     )
