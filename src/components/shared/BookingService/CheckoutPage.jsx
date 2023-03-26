@@ -4,6 +4,7 @@ import { sessionStorageGet, sessionStorageStore } from '../../functions/commonFu
 import { checkoutForm } from '../../validations/validationSchema';
 import PaymentForm from '../../forms/PaymentForm';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // control state
@@ -16,23 +17,25 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     const [sectionHide, setSectionHide] = useState(false)
 
     useEffect(() => {
-        const date = new Date().toLocaleDateString()
-        const replateDate = date.replaceAll("/", "-")
-        console.log("date local string", date.replaceAll("/", "-"))
-        console.log("date local routeId", routeId)
-        axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&date=${replateDate}`)
-            .then(function (response) {
-                // handle success
-                console.log("backend res", response.data);
-                setControlService(response.data)
-            })
-            .catch(function (error) {
-                // handle error
-                console.log("error", error);
-            })
-            .finally(function () {
-                // always executed
-            });
+        try {
+            const sqlDate = sqldate()
+            console.log("date local routeId", routeId)
+            axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&date=${sqlDate}`)
+                .then(function (response) {
+                    // handle success
+                    console.log("backend response", response.data);
+                    setControlService(response.data)
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log("error", error);
+                })
+                .finally(function () {
+                    // always executed
+                });
+        } catch (error) {
+            console.log("fetch disable error", error)
+        }
     }, [])
 
     // control functions
@@ -67,6 +70,18 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
 
     }
 
+    function sqldate() {
+        if (!Date.prototype.toUTCDate) {
+            // eslint-disable-next-line no-extend-native
+            Date.prototype.toUTCDate = function () {
+                return this.getUTCFullYear() + '-' +
+                    ('0' + (this.getUTCMonth() + 1)).slice(-2) + '-' +
+                    ('0' + this.getUTCDate()).slice(-2);
+            }
+        }
+        const sqlDate = new Date().toUTCDate()
+        return sqlDate
+    }
 
 
     return (
@@ -153,7 +168,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                         </div>
                     </div>
 
-                    <div className="bg-white py-12 md:py-24">
+                    <div className="bg-white py-12 md:py-24 flex justify-center items-center">
                         <div className="px-4 lg:px-8">
                             {
                                 // controlService.status === false ?
@@ -303,8 +318,11 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
 
                                         </Formik>
                                         :
-                                        <div>
-                                            <h2>You cant add today any booking of this service Please choose another one</h2>
+                                        <div >
+                                            <h2 className='bg-red-300 text-white font-bold border-color: rgb(127 29 29) p-2'    >You cant add today any booking of this service Please choose another one</h2>
+                                            <div className='text-center border mt-2'>
+                                                <Link to="/home">Go Home</Link>
+                                            </div>
                                         </div>
                                     :
                                     <div>
