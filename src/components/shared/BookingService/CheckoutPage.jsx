@@ -52,9 +52,9 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     const [customerErrors, setErrors] = useState("")
     useEffect(() => {
         try {
-            const date = sqlDate()
+            const userEmail = sessionStorageGet("user-email")
             console.log("date local routeId", routeId)
-            axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}`)
+            axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&email=${userEmail}`)
                 // axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&date=${date}`)
                 .then(function (response) {
                     // handle success
@@ -389,7 +389,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                         }
                                                         <div className="mt-2">
                                                             <button type='submit'
-                                                                disabled={(customerErrors !== "" ) ? true : false}
+                                                                disabled={(customerErrors !== "") ? true : false}
                                                                 className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
                                                                 Next
                                                             </button>

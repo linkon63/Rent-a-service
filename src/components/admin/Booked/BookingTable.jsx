@@ -52,6 +52,11 @@ export default function BookingTable({ bookingData }) {
                         >
                             Payment_intent
                         </th>
+                        <th
+                            className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                        >
+                            Start Date
+                        </th>
                     </tr>
                 </thead>
 
@@ -70,6 +75,7 @@ export default function BookingTable({ bookingData }) {
                                 <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-ellipsis">{bD?.location}</td>
                                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">{bD?.hours}</td>
                                 <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-ellipsis">{bD?.payment_intent}</td>
+                                <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-ellipsis">{bD?.startDate}</td>
                             </tr>
                         ))
                     }
