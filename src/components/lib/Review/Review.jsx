@@ -10,7 +10,7 @@ const Review = () => {
                     <div className="w-full max-w-6xl mx-auto">
                         <div className="text-center max-w-xl mx-auto">
                             <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">What people <br />are saying.</h1>
-                            <h3 className="text-xl mb-5 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <h3 className="text-xl mb-5 font-light">Drive with Ease: Rent a Car for Your Next Adventure.</h3>
                             <div className="text-center mb-10">
                                 <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
                                 <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
@@ -31,7 +31,8 @@ const Review = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt ratione dolor exercitationem minima quas itaque saepe quasi architecto vel! Accusantium, vero sint recusandae cum tempora nemo commodi soluta deleniti.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"
+                                        </span>I had a great experience renting a car from this company. The vehicle was clean and well-maintained, and the staff was friendly and helpful<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
                                     </div>
                                 </div>
                                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
@@ -44,7 +45,7 @@ const Review = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Dolore quod necessitatibus, labore sapiente, est, dignissimos ullam error ipsam sint quam tempora vel.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>"The rental process was fast and easy, and the prices were very reasonable. I appreciated the flexibility of being able to pick up and drop off the car at different locations."<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +60,7 @@ const Review = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, obcaecati ullam excepturi dicta error deleniti sequi.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>"I was impressed with the variety of cars available to rent, from economy to luxury. The staff was knowledgeable and helped me select the perfect car for my needs."<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                                     </div>
                                 </div>
                                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
@@ -72,7 +73,7 @@ const Review = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore voluptatum nostrum atque, corrupti, vitae esse id accusamus dignissimos neque reprehenderit natus, hic sequi itaque dicta nisi voluptatem! Culpa, iusto.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>"The rental car was exactly what I needed for my trip. It was clean, comfortable, and drove smoothly. I would definitely rent from this company again."<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +88,7 @@ const Review = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptatem porro obcaecati dicta, quibusdam sunt ipsum, laboriosam nostrum facere exercitationem pariatur deserunt tempora molestiae assumenda nesciunt alias eius? Illo, autem!<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>I had a minor issue with the car during my rental, but the customer service team was quick to respond and resolved the problem right away. I appreciated their prompt and professional service."<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                                     </div>
                                 </div>
                                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
@@ -100,7 +101,7 @@ const Review = () => {
                                         </div>
                                     </div>
                                     <div className="w-full">
-                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto, explicabo, cupiditate quas totam!<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>The rental car was exactly what I needed for my trip. It was clean, comfortable, and drove smoothly. I would definitely rent from this company again.!<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -111,8 +112,8 @@ const Review = () => {
             <section className="py-6 dark:bg-gray-800 dark:text-gray-50 mt-5 mb-5">
                 <div className="container mx-auto flex flex-col justify-around p-4 text-center md:p-10 lg:flex-row">
                     <div className="flex flex-col justify-center lg:text-left">
-                        <p className="mb-1 text-sm font-medium tracking-widest uppercase dark:text-violet-400">Hic eligendi necessitatibus quod quia</p>
-                        <h1 className="py-2 text-3xl font-medium leading-tight title-font">Master Cleanse Reliac Heirloom</h1>
+                        <p className="mb-1 text-sm font-medium tracking-widest uppercase dark:text-violet-400">No Car? No Problem! Rent a Car for Your Next Outing</p>
+                        <h1 className="py-2 text-3xl font-medium leading-tight title-font">Rent a Car and Enjoy the Flexibility to Go Wherever You Want</h1>
                     </div>
                     <div className="flex flex-col items-center justify-center flex-shrink-0 mt-6 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 lg:ml-4 lg:mt-0 lg:justify-end">
                         <button className="inline-flex items-center px-6 py-3 rounded-lg dark:bg-violet-400 dark:text-gray-900">

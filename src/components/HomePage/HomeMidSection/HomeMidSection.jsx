@@ -3,47 +3,12 @@ import React from 'react';
 const HomeMidSection = () => {
     return (
         <div>
-            {/* future will added this section here */}
-            {/* <div className="py-20 bg-gray-50 mt-5 mb-5 ">
-                <div className="container mx-auto px-6 md:px-12 xl:px-32">
-                    <div className="mb-16 text-center">
-                        <h2 className="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Tailus blocks leadership</h2>
-                        <p className="text-gray-600 lg:w-8/12 lg:mx-auto">Tailus prides itself not only on award-winning technology, but also on the talent of its people of some of the brightest minds and most experienced executives in business.</p>
-                    </div>
-                    <div className="grid gap-12 items-center md:grid-cols-3">
-                        <div className="space-y-4 text-center">
-                            <img className="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                                src="https://tailus.io/sources/blocks/classic/preview/images/woman1.jpg" alt="woman" loading="lazy" width="640" height="805" />
-                            <div>
-                                <h4 className="text-2xl">Hentoni Doe</h4>
-                                <span className="block text-sm text-gray-500">CEO-Founder</span>
-                            </div>
-                        </div>
-                        <div className="space-y-4 text-center">
-                            <img className="w-64 h-64 mx-auto object-cover rounded-xl md:w-48 md:h-64 lg:w-64 lg:h-80"
-                                src="https://tailus.io/sources/blocks/classic/preview/images/man.jpg" alt="man" loading="lazy" width="1000" height="667" />
-                            <div>
-                                <h4 className="text-2xl">Jonathan Doe</h4>
-                                <span className="block text-sm text-gray-500">Chief Technical Officer</span>
-                            </div>
-                        </div>
-                        <div className="space-y-4 text-center">
-                            <img className="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                                src="https://tailus.io/sources/blocks/classic/preview/images/woman.jpg" alt="woman" loading="lazy" width="1000" height="667" />
-                            <div>
-                                <h4 className="text-2xl">Anabelle Doe</h4>
-                                <span className="block text-sm text-gray-500">Chief Operations Officer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
+            <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Let's Explore <span class="text-blue-600 dark:text-blue-500">The</span> Price.</h1>
             <section className="py-6 dark:bg-gray-800 dark:text-gray-100 mb-5">
                 <div className="container p-4 mx-auto sm:p-10">
                     <div className="mb-12 space-y-4 text-center">
                         <h1 className="text-4xl font-semibold leading-tight">Pricing</h1>
-                        <p className="px-4 sm:px-8 lg:px-24">Sunt suscipit eaque qui iure unde labore numquam iusto alias explicabo, pariatur ipsam, cupiditate aliquid modi?</p>
+                        <p className="px-4 sm:px-8 lg:px-24">Price is what you pay. Value is what you get</p>
                         <div>
                             <button className="px-4 py-1 font-semibold border rounded-l-lg dark:bg-violet-400 dark:border-violet-400 dark:text-gray-900">Monthly</button>
                             <button className="px-4 py-1 border rounded-r-lg dark:border-violet-400">Annually</button>
@@ -63,19 +28,19 @@ const HomeMidSection = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>No Drive Cost 🔄️</span>
                                     </li>
                                     <li className="flex justify-center space-x-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>Maintains Cost🔄️</span>
                                     </li>
                                     <li className="flex justify-center space-x-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>Risk Free Service "</span>
                                     </li>
                                 </ul>
                                 <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">
@@ -96,19 +61,19 @@ const HomeMidSection = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>No Drive Cost 🔄️</span>
                                     </li>
                                     <li className="flex justify-center space-x-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>Maintains Cost🔄️</span>
                                     </li>
                                     <li className="flex justify-center space-x-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>Risk Free Service "</span>
                                     </li>
                                 </ul>
                                 <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">
@@ -153,7 +118,7 @@ const HomeMidSection = () => {
                 </div>
             </section>
 
-
+            <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Let's See <span class="text-blue-600 dark:text-blue-500">who we </span> are.</h1>
             <section className="p-4 my-6 md:p-8 bg-gray dark:text-gray-100 flex justify-center border">
                 <div className="container grid grid-cols-1 gap-6 m-4 mx-auto md:m-0 md:grid-cols-2 xl:grid-cols-3">
                     <div className="flex overflow-hidden rounded-lg dark:bg-gray-900 dark:text-gray-100">
@@ -166,7 +131,7 @@ const HomeMidSection = () => {
                         </div>
                         <div className="flex items-center justify-between flex-1 p-3">
                             <p className="text-2xl font-semibold">200+</p>
-                            <p>Projects</p>
+                            <p>Cars</p>
                         </div>
                     </div>
                     <div className="flex overflow-hidden rounded-lg dark:bg-gray-900 dark:text-gray-100">
@@ -225,8 +190,8 @@ const HomeMidSection = () => {
                             </svg>
                         </div>
                         <div className="flex items-center justify-between flex-1 p-3">
-                            <p className="text-2xl font-semibold">720 L</p>
-                            <p>Coffee</p>
+                            <p className="text-2xl font-semibold">999</p>
+                            <p>Discussion</p>
                         </div>
                     </div>
                 </div>

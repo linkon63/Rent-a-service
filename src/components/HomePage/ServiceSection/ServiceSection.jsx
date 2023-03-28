@@ -8,9 +8,10 @@ const serviceData = allServiceData;
 const ServiceSection = () => {
     return (
         <div className='mt-5'>
-            <div className="mb-2 text-center bg-white">
+            {/* <div className="mb-2 text-center bg-white">
                 <h2 className="text-center text-2xl text-gray-900 font-bold md:text-4xl p-2">Take Our Services</h2>
-            </div>
+            </div> */}
+            <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Let's Go<span class="text-blue-600 dark:text-blue-500">Take Our Services</span> Services.</h1>
 
             <div className="grid grid-cols-3 gap-4">
                 {
