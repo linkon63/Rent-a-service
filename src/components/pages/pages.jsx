@@ -18,6 +18,7 @@ import PrivateRoute from "../Private/PrivateRoute";
 import TestNav from "../shared/Test/TestNav";
 import DashboardNav from "../shared/Navbar/DashboardNav";
 import BookedPage from "../admin/Booked/BookedPage";
+import SettingPage from "../admin/Setting/SettingPage";
 
 const pages = [
     {
@@ -117,6 +118,15 @@ const pages = [
             <PrivateRoute>
                 <DashboardNav>
                     <BookedPage />
+                </DashboardNav>
+            </PrivateRoute>
+    },
+    {
+        path: "/admin/setting",
+        element:
+            <PrivateRoute>
+                <DashboardNav>
+                    <SettingPage />
                 </DashboardNav>
             </PrivateRoute>
     },

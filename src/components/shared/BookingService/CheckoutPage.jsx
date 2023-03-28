@@ -43,10 +43,6 @@ const FormObserver = ({ controlService, setErrors }) => {
 export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // control state
     const [controlService, setControlService] = useState({})
-
-    // const [initialValues, setInitialValues] = useState({
-    //     name: '', phone: '', location: '', hours: '', address: '', startDate: "", endDate: ""
-    // })
     const [userInfo, setUserInfo] = useState({})
     const [sectionHide, setSectionHide] = useState(false)
     const [customerErrors, setErrors] = useState("")
@@ -61,15 +57,9 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                     console.log("backend response", response.data);
                     let data = { ...response.data }
                     let allBookedDates = data.allBookedDate
-                    // console.log("allBookedDates", allBookedDates)
-
-                    // console.log("Date Convert", dateConvert(allBookedDates[2]))
-                    // console.log("Today Convert", dateConvert(new Date()))
-
                     if (allBookedDates) {
                         const foundDate = allBookedDates.find((abd) => dateConvert(abd) === dateConvert(new Date()))
-                        console.log("foundDate : ", foundDate)
-
+                        // console.log("foundDate : ", foundDate)
                         if (foundDate) {
                             data.status = true;
                             console.log("Updated Data : ", data)
@@ -84,20 +74,6 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                         console.log("Updated Data : ", data)
                         setControlService(data)
                     }
-
-                    // const foundDate = allBookedDates.find((abd) => dateConvert(abd) === dateConvert(new Date()))
-                    // console.log("foundDate : ", foundDate)
-
-                    // if (foundDate) {
-                    //     data.status = true;
-                    //     console.log("Updated Data : ", data)
-                    //     setControlService(data)
-                    // } else {
-                    //     data.status = false;
-                    //     console.log("Updated Data : ", data)
-                    //     setControlService(data)
-                    // }
-
                 })
                 .catch(function (error) {
                     // handle error
