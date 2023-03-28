@@ -7,10 +7,34 @@ import { checkoutForm } from '../../validations/validationSchema';
 import PaymentForm from '../../forms/PaymentForm';
 import axios from 'axios';
 
-const FormObserver = ({ }) => {
+const FormObserver = ({ controlService, setErrors }) => {
 
     const { values } = useFormikContext();
-    console.log("values", values)
+    sessionStorageStore("user-info", values)
+    try {
+        const { allBookedDate } = controlService
+        const startDate = values.startDate
+        if (startDate && allBookedDate.length > 0) {
+            console.log("There is startDate", startDate)
+            console.log("allBookedDate.length > 0", allBookedDate.length > 0)
+            // console.log("✅ values", values)
+            // console.log("✅ allBookedDate", allBookedDate)
+            const foundDate = allBookedDate.find((abd) => dateConvert(abd) === startDate)
+            console.log("✅ allBookedDate", allBookedDate)
+            console.log("✅ foundDate", foundDate)
+            if (foundDate) {
+                console.log("✅ foundDate", foundDate)
+                setErrors("You can't book service this date")
+            } else {
+                setErrors("")
+            }
+        } else {
+            console.log("❌ values", values)
+            setErrors("")
+        }
+    } catch (error) {
+        console.log("Error from form observer")
+    }
 
 
     return null;
@@ -25,7 +49,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // })
     const [userInfo, setUserInfo] = useState({})
     const [sectionHide, setSectionHide] = useState(false)
-
+    const [customerErrors, setErrors] = useState("")
     useEffect(() => {
         try {
             const date = sqlDate()
@@ -37,23 +61,42 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                     console.log("backend response", response.data);
                     let data = { ...response.data }
                     let allBookedDates = data.allBookedDate
-                    console.log("allBookedDates", allBookedDates)
+                    // console.log("allBookedDates", allBookedDates)
 
-                    console.log("Date Convert", dateConvert(allBookedDates[2]))
-                    console.log("Today Convert", dateConvert(new Date()))
+                    // console.log("Date Convert", dateConvert(allBookedDates[2]))
+                    // console.log("Today Convert", dateConvert(new Date()))
 
-                    const foundDate = allBookedDates.find((abd) => dateConvert(abd) === dateConvert(new Date()))
-                    console.log("foundDate : ", foundDate)
+                    if (allBookedDates) {
+                        const foundDate = allBookedDates.find((abd) => dateConvert(abd) === dateConvert(new Date()))
+                        console.log("foundDate : ", foundDate)
 
-                    if (foundDate) {
-                        data.status = true;
-                        console.log("Updated Data : ", data)
-                        setControlService(data)
+                        if (foundDate) {
+                            data.status = true;
+                            console.log("Updated Data : ", data)
+                            setControlService(data)
+                        } else {
+                            data.status = false;
+                            console.log("Updated Data : ", data)
+                            setControlService(data)
+                        }
                     } else {
                         data.status = false;
                         console.log("Updated Data : ", data)
                         setControlService(data)
                     }
+
+                    // const foundDate = allBookedDates.find((abd) => dateConvert(abd) === dateConvert(new Date()))
+                    // console.log("foundDate : ", foundDate)
+
+                    // if (foundDate) {
+                    //     data.status = true;
+                    //     console.log("Updated Data : ", data)
+                    //     setControlService(data)
+                    // } else {
+                    //     data.status = false;
+                    //     console.log("Updated Data : ", data)
+                    //     setControlService(data)
+                    // }
 
                 })
                 .catch(function (error) {
@@ -81,7 +124,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
         const userData = sessionStorageGet("user-info")
         const userEmail = sessionStorageGet("user-email")
 
-        const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random() }
+        const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random(), vehicleId: routeId }
         console.log("Post API", bookingInfo)
 
         if (userData) {
@@ -118,7 +161,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
 
 
 
-
+    console.log("customerErrors", customerErrors)
     return (
 
         <div className='mt-2 flex justify-center'>
@@ -220,7 +263,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                             validateOnChange={true}
                                             onSubmit={async (values) => {
                                                 handleSubmit(values)
-                                                console.log("Submit form")
+                                                // console.log("Submit form")
                                             }}
                                         >
                                             {({ errors }) => {
@@ -228,7 +271,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                 return <div>
 
                                                     <Form>
-                                                        <FormObserver />
+                                                        <FormObserver controlService={controlService} setErrors={setErrors} />
                                                         <div className="pb-2">
                                                             <label
                                                                 className="block text-xs font-medium text-gray-700"
@@ -341,8 +384,12 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                         {
                                                             errors.startDate && <div className='text-end'>{errors.startDate}</div>
                                                         }
+                                                        {
+                                                            customerErrors && customerErrors
+                                                        }
                                                         <div className="mt-2">
                                                             <button type='submit'
+                                                                disabled={(customerErrors !== "" ) ? true : false}
                                                                 className="block w-full p-2 text-sm rounded-full bg-blue-700 hover:bg-indigo-600 focus:outline-none">
                                                                 Next
                                                             </button>
