@@ -50,14 +50,16 @@ export default function CarsServicePage() {
 
     return (
         <>
-            <div className=" flex justify-center bg-white">
+            <div className=" flex justify-center">
                 <div className='container'>
                     <div>
-                        <div className="mb-2 text-center bg-white border mt-3">
+                        {/* <div className="mb-2 text-center bg-white border mt-3">
                             <h2 className="text-center text-2xl text-gray-900 font-bold md:text-4xl p-2">Take Our Services</h2>
-                        </div>
+                        </div> */}
 
-                        <div className='mt-2 border bg-zinc-900'>
+                        <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Let's Go<span class="text-blue-600 dark:text-blue-500">Take Our Services</span> Services.</h1>
+
+                        <div className='mt-2 bg-zinc-900'>
                             <div className="grid grid-cols-2 content-center gap-4">
                                 <div className=''>
                                     <div className='text-center'>
@@ -83,7 +85,7 @@ export default function CarsServicePage() {
                                                         <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900">
                                                             <Link to={`/bookingService/${bookingName}/${data.id}`}>Book Now</Link>
                                                         </button>
-                                                        <p>{`/bookingService/${bookingName}/${data.id}`}</p>
+                                                        {/* <p>{`/bookingService/${bookingName}/${data.id}`}</p> */}
                                                     </div>
                                                 </div>
                                             ))
@@ -145,6 +147,10 @@ export default function CarsServicePage() {
                             </div>
                             {/* Step of process booked a car */}
                         </div >
+
+                        <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Let's watch<span class="text-blue-600 dark:text-blue-500"> timelines</span> of service.</h1>
+
+
                         <div className="grid grid-cols-2 mt-5">
                             <section className="dark:bg-gray-800 dark:text-gray-100">
                                 <div className="container max-w-5xl px-4 py-12 mx-auto">

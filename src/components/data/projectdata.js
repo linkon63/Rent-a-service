@@ -56,21 +56,21 @@ export const allCarsData = [
         id: 1,
         name: "Ferrari",
         image: car1,
-        describe: "Lorem ipsum dolor sit amet.",
+        describe: "Driving a car is like painting a picture, except the paint is the road and the brush is your hands.",
         price: "14.99"
     },
     {
         id: 2,
         name: "Jeep",
         image: car2,
-        describe: "Lorem ipsum dolor sit amet.",
+        describe: "Cars are freedom on four wheels",
         price: "14.99"
     },
     {
         id: 3,
         name: "BMW",
         image: car3,
-        describe: "Lorem ipsum dolor sit amet.",
+        describe: "Cars are not just a mode of transportation, they are a form of self-expression and a reflection of our personality",
         price: "14.99"
     },
 ]
