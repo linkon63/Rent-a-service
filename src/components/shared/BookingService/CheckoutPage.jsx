@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { Field, Form, Formik } from 'formik'
-import { sessionStorageGet, sessionStorageStore } from '../../functions/commonFunctions';
+import { Link } from 'react-router-dom';
+import { Field, Form, Formik, useFormikContext } from 'formik'
+import { sessionStorageGet, sessionStorageRemove, sessionStorageStore } from '../../functions/commonFunctions';
+import { dateConvert } from '../../functions/dateConvertFunction';
 import { checkoutForm } from '../../validations/validationSchema';
 import PaymentForm from '../../forms/PaymentForm';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+
+const FormObserver = ({ }) => {
+
+    const { values } = useFormikContext();
+    console.log("values", values)
+
+
+    return null;
+};
 
 export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     // control state
@@ -18,13 +28,33 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
 
     useEffect(() => {
         try {
-            const sqlDate = sqldate()
+            const date = sqlDate()
             console.log("date local routeId", routeId)
-            axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&date=${sqlDate}`)
+            axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}`)
+                // axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&date=${date}`)
                 .then(function (response) {
                     // handle success
                     console.log("backend response", response.data);
-                    setControlService(response.data)
+                    let data = { ...response.data }
+                    let allBookedDates = data.allBookedDate
+                    console.log("allBookedDates", allBookedDates)
+
+                    console.log("Date Convert", dateConvert(allBookedDates[2]))
+                    console.log("Today Convert", dateConvert(new Date()))
+
+                    const foundDate = allBookedDates.find((abd) => dateConvert(abd) === dateConvert(new Date()))
+                    console.log("foundDate : ", foundDate)
+
+                    if (foundDate) {
+                        data.status = true;
+                        console.log("Updated Data : ", data)
+                        setControlService(data)
+                    } else {
+                        data.status = false;
+                        console.log("Updated Data : ", data)
+                        setControlService(data)
+                    }
+
                 })
                 .catch(function (error) {
                     // handle error
@@ -42,7 +72,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     const handleSubmit = (values) => {
         console.log("Values", values)
         setUserInfo(values)
-        sessionStorageStore("user-info", { ...values, vehicleId: routeId })
+        // sessionStorageStore("user-info", { ...values, vehicleId: routeId })
         // setSectionHide(true) // future it will comment if payment not work
 
 
@@ -51,9 +81,11 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
         const userData = sessionStorageGet("user-info")
         const userEmail = sessionStorageGet("user-email")
 
+        const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random() }
+        console.log("Post API", bookingInfo)
+
         if (userData) {
-            const bookingInfo = { ...userData, email: userEmail, payment_intent: Math.random() }
-            console.log("Post API", bookingInfo)
+            // console.log("Post API", bookingInfo)
 
             axios.post('http://localhost:8080/bookingService', {
                 ...bookingInfo
@@ -61,6 +93,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                 .then(function (response) {
                     console.log(response);
                     alert("Check your booking at Dashboard")
+                    sessionStorageRemove('user-info')
                     window.location.replace("http://localhost:3000/admin/booked")
                 })
                 .catch(function (error) {
@@ -70,7 +103,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
 
     }
 
-    function sqldate() {
+    function sqlDate() {
         if (!Date.prototype.toUTCDate) {
             // eslint-disable-next-line no-extend-native
             Date.prototype.toUTCDate = function () {
@@ -82,6 +115,8 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
         const sqlDate = new Date().toUTCDate()
         return sqlDate
     }
+
+
 
 
     return (
@@ -181,7 +216,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                     (controlService.status === false) ?
                                         < Formik
                                             initialValues={{ ...initialValues }}
-                                            validationSchema={checkoutForm}
+                                            validationSchema={checkoutForm(controlService)}
                                             validateOnChange={true}
                                             onSubmit={async (values) => {
                                                 handleSubmit(values)
@@ -190,10 +225,10 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                         >
                                             {({ errors }) => {
                                                 const first = Object.keys(errors)[0];
-                                                console.log("Formik Error", errors)
                                                 return <div>
 
                                                     <Form>
+                                                        <FormObserver />
                                                         <div className="pb-2">
                                                             <label
                                                                 className="block text-xs font-medium text-gray-700"
@@ -275,6 +310,8 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                                                 type="date"
                                                                 name="startDate"
                                                                 className="mt-1 w-full rounded-md border-gray-200 shadow-lg sm:text-lg p-1 mx-1 px-1"
+                                                                min={sqlDate()}
+                                                            // max={controlService?.date}
                                                             />
                                                         </div>
                                                         {/* <div className="pb-2">
@@ -322,6 +359,13 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                                             <h2 className='bg-red-300 text-white font-bold border-color: rgb(127 29 29) p-2'    >You cant add today any booking of this service Please choose another one</h2>
                                             <div className='text-center border mt-2'>
                                                 <Link to="/home">Go Home</Link>
+                                            </div>
+                                            <div className='text-center border mt-2'>
+                                                <button onClick={() => {
+                                                    setControlService({ ...controlService, status: false })
+                                                }}>
+                                                    Book for other date ?
+                                                </button>
                                             </div>
                                         </div>
                                     :
