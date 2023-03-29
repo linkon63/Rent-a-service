@@ -18,7 +18,7 @@ const HomeMidSection = () => {
                         <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-gray-700">
                             <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-800">
                                 <p className="text-lg font-medium">CAR</p>
-                                <p className="text-5xl font-bold">420€
+                                <p className="text-5xl font-bold">420$
                                     <span className="text-xl dark:text-gray-400"> /mo</span>
                                 </p>
                             </div>
@@ -51,7 +51,7 @@ const HomeMidSection = () => {
                         <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-violet-400">
                             <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-800">
                                 <p className="text-lg font-medium">Bus</p>
-                                <p className="text-5xl font-bold">600€
+                                <p className="text-5xl font-bold">600$
                                     <span className="text-xl dark:text-gray-400"> /mo</span>
                                 </p>
                             </div>
@@ -84,7 +84,7 @@ const HomeMidSection = () => {
                         <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-gray-700">
                             <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-800">
                                 <p className="text-lg font-medium">Truck</p>
-                                <p className="text-5xl font-bold">540€
+                                <p className="text-5xl font-bold">540$
                                     <span className="text-xl dark:text-gray-400"> /mo</span>
                                 </p>
                             </div>
@@ -94,9 +94,21 @@ const HomeMidSection = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
-                                        <span>Lumet consectetur adipisicing</span>
+                                        <span>No Drive Cost 🔄️</span>
                                     </li>
                                     <li className="flex justify-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                        </svg>
+                                        <span>Maintains Cost🔄️</span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                        </svg>
+                                        <span>Risk Free Service "</span>
+                                    </li>
+                                    {/* <li className="flex justify-center space-x-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                                         </svg>
@@ -108,6 +120,12 @@ const HomeMidSection = () => {
                                         </svg>
                                         <span>Lumet consectetur adipisicing</span>
                                     </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-violet-400">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                        </svg>
+                                        <span>Lumet consectetur adipisicing</span>
+                                    </li> */}
                                 </ul>
                                 <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 dark:bg-violet-400 dark:text-gray-900">
                                     Book

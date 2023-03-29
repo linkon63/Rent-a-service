@@ -9,7 +9,7 @@ const Navbar = () => {
                 <div className="container flex justify-between h-12 mx-auto md:justify-center md:space-x-8">
                     <ul className="items-stretch hidden space-x-3 md:flex">
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="/Contact" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Contact</a>
+                            <Link rel="noopener noreferrer" to="/contact" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Contact</Link>
                         </li>
                         <li className="flex">
                             <a rel="noopener noreferrer" href="/#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Target</a>

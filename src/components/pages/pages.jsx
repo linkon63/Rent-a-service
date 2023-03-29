@@ -19,6 +19,7 @@ import TestNav from "../shared/Test/TestNav";
 import DashboardNav from "../shared/Navbar/DashboardNav";
 import BookedPage from "../admin/Booked/BookedPage";
 import SettingPage from "../admin/Setting/SettingPage";
+import Contact from "../lib/ContactPage/Contact";
 
 const pages = [
     {
@@ -42,8 +43,14 @@ const pages = [
         ]
     },
     {
-        path: "/about",
-        element: <div>Hello about!</div>,
+        path: "/contact",
+        element: <Main />,
+        children: [
+            {
+                path: '/contact',
+                element: <Contact />
+            }
+        ]
     },
     {
         path: "/services/:id",

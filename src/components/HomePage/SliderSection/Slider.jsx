@@ -10,13 +10,13 @@ export default function Slider() {
     return (
         <div className='bg-slate-900 rounded h-96'>
             <div className='flex h-full '>
-                <div className='flex justify-center items-center w-8/12'>
+                <div className='flex justify-center items-center md:w-8/12 min-w-fulL'>
                     <div>
                         <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl p-2"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Rental cars</span> <br /> can be your experience</h1>
                         <h1 class="mb-4 text-4xl leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl dark:text-white text-right">Find your <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">best</mark> match for days</h1>
                     </div>
                 </div>
-                <div className='h-full flex justify-end w-4/12'>
+                <div className='h-full flex justify-end md:w-4/12 min-w-fulL'>
                     <div>
                         {/* <img className=" transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0" src={blkCarImage} alt="imageDescription" style={{ height: '100%', width: "100%" }} /> */}
 
