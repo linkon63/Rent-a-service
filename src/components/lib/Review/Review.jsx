@@ -4,6 +4,7 @@ import './Review.css'
 const Review = () => {
     return (
         <div>
+            <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Customer <span class="text-blue-600 dark:text-blue-500">Review</span>s</h1>
             {/* <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css')</style> */}
             <div className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
                 <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
@@ -109,6 +110,7 @@ const Review = () => {
                     </div>
                 </div>
             </div>
+            <h1 class="mb-10 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Down<span class="text-blue-600 dark:text-blue-500">load</span> our service</h1>
             <section className="py-6 dark:bg-gray-800 dark:text-gray-50 mt-5 mb-5">
                 <div className="container mx-auto flex flex-col justify-around p-4 text-center md:p-10 lg:flex-row">
                     <div className="flex flex-col justify-center lg:text-left">
