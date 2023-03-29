@@ -5,6 +5,7 @@ import { allBusData, allCarsData, allTrucksData } from '../../data/projectdata'
 import PaymentForm from '../../forms/PaymentForm'
 import { sessionStorageGet, sessionStorageStore } from '../../functions/commonFunctions'
 import Footer from '../Footer/Footer'
+import Loader from '../Loader/Loader'
 import CheckoutPage from './CheckoutPage'
 
 const car = allCarsData
@@ -19,6 +20,7 @@ export default function BookingService() {
     const filteredCar = car.filter(data => data.id == routeId)[0]
     const filteredBus = bus.filter(data => data.id == routeId)[0]
     const filteredTruck = truck.filter(data => data.id == routeId)[0]
+    const [loading, setLoading] = useState(false)
 
     const [initialValues, setInitialValues] = useState({
         name: '', phone: '', location: '', hours: '', address: '', startDate: "", endDate: ""
@@ -26,16 +28,19 @@ export default function BookingService() {
 
     // control useeffect
     useEffect(() => {
+        setLoading(true)
         const userInfo = sessionStorageGet("user-info")
         if (userInfo) {
             setInitialValues(userInfo)
             console.log("⚓ user info", userInfo)
         }
+        setLoading(false)
     }, [])
 
     return (
 
         <div className='w-100'>
+            {loading && <Loader />}
             {
                 serviceName == 'car' &&
                 filteredCar &&

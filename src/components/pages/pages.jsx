@@ -4,8 +4,6 @@ import {
 
 
 import Main from "../Layout/Main"
-import Admin from "../admin/Admin/Admin";
-import Booked from "../admin/Booked/Booked";
 import Login from "../auth/Login/Login";
 import Registration from "../auth/Registration/Registration";
 import Home from "../HomePage/Home/Home";
@@ -15,7 +13,6 @@ import BookingService from "../shared/BookingService/BookingService";
 import PaymentForm from "../forms/PaymentForm";
 import SuccessfulPage from "../shared/SuccessfulPage/SuccessfulPage";
 import PrivateRoute from "../Private/PrivateRoute";
-import TestNav from "../shared/Test/TestNav";
 import DashboardNav from "../shared/Navbar/DashboardNav";
 import BookedPage from "../admin/Booked/BookedPage";
 import SettingPage from "../admin/Setting/SettingPage";
