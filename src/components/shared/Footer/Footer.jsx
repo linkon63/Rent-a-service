@@ -8,7 +8,7 @@ const Footer = () => {
             <div className='text-gray-300'>
                 <img className='w-52' src="https://www.pngmart.com/files/22/Car-Logo-Transparent-PNG.png" alt="" />
                 <p className='font-semibold text-2xl'>Rent A Car</p>
-                <p>Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit. Nam eius laboriosam .</p>
+                <p>Enjoy a Hassle-Free Rental Experience with Our Trusted Car Rental Service</p>
 
             </div>
             <div className='text-gray-300'>
@@ -21,7 +21,7 @@ const Footer = () => {
             <div className='text-gray-300'>
                 <span className="footer-title">Contact Us: </span>
                 <a href='/#' className="link link-hover">Email: rentacar@gmail.com</a>
-                <a href='/#' className="link link-hover">+88017********</a>
+                {/* <a href='/#' className="link link-hover">+88017********</a> */}
                 <a href='/#' className="link link-hover">Sector-10, Uttara, Dhaka</a>
                 <a href='/#' className="link link-hover">Press kit</a>
             </div>

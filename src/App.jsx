@@ -1,9 +1,7 @@
 import Routers from "./components/routes/Routers";
 
 function App() {
-  return (
-    <Routers />
-  );
+  return <Routers />;
 }
 
 export default App;

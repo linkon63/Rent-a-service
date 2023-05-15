@@ -1,29 +1,51 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Field, Form, } from 'formik';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { LoginPageLeftImage } from '../../styles/AuthStyle/loginAndRegistrationStyle';
 import Loader from '../../shared/Loader/Loader';
+import axios from 'axios';
+import { sessionStorageStore } from '../../functions/commonFunctions';
 export default function Registration() {
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState(false)
+    const navigate = useNavigate();
+
     // create account section
     const handleSubmit = async (values) => {
         setLoading(true);
-        console.log("📲📲Handle Add", values);
+        console.log("📲User info", values);
         try {
-            const auth = getAuth();
-            await createUserWithEmailAndPassword(auth, values.email, values.password)
-                .then((userCredential) => {
-                    // Signed in 
-                    const user = userCredential.user;
-                    console.log("✅Create a account successful✅", user)
-                    setLoading(false)
+
+            axios.post('http://localhost:8080/addRegisterUser', {
+                ...values
+            })
+                .then(function (response) {
+                    console.log("✅response", response);
+                    const responseEmail = response.data.userMail;
+                    console.log("responseEmail", responseEmail);
+                    sessionStorageStore("user-email", responseEmail)
+                    alert("Your account has successfully created")
+                    navigate('/home')
                 })
-                .catch((error) => {
-                    console.log("❌Error from Create a account❌", error)
-                    setLoading(false)
+                .catch(function (error) {
+                    console.log("❌error", error);
+                    // show error message and inform user
                 });
+
+            // firebase auth crate account
+            // const auth = getAuth();
+            // await createUserWithEmailAndPassword(auth, values.email, values.password)
+            //     .then((userCredential) => {
+            //         // Signed in 
+            //         const user = userCredential.user;
+            //         console.log("✅Create a account successful✅", user)
+            //         setLoading(false)
+            //     })
+            //     .catch((error) => {
+            //         console.log("❌Error from Create a account❌", error)
+            //         setLoading(false)
+            //     });
         } catch (error) {
             // setLoading(false)
             console.log("❌Error from Create a account tryCatch❌", error)
@@ -78,10 +100,7 @@ export default function Registration() {
 
                         <Formik
                             initialValues={{
-                                firstName: '',
-                                lastName: '',
-                                email: '',
-                                password: '',
+                                email: "", password: "", name: "", address: "", phone: "", details: ""
                             }}
                             validate={false}
                             onSubmit={async (values) => {
@@ -96,36 +115,49 @@ export default function Registration() {
                                         placeholder="Email"
                                         className="block w-full p-4 text-lg rounded-sm bg-black" />
                                 </div>
-                                <div className="pb-2 pt-4 w-full flex justify-between">
-                                    <Field
-                                        type="text"
-                                        name="firstName"
-                                        placeholder="First Name"
-                                        className="block w-full p-4 text-lg rounded-sm bg-black w-2/4 mr-2"
-                                    />
-                                    <Field
-                                        type="text"
-                                        name="lastName"
-                                        placeholder="Last Name"
-                                        className="block w-full p-4 text-lg rounded-sm bg-black w-2/4 ml-2"
-                                    />
-                                </div>
                                 <div className="pb-2 pt-4">
                                     <Field
                                         type="password"
                                         name="password"
                                         placeholder="Password"
-                                        className="block w-full p-4 text-lg rounded-sm bg-black"
-                                    />
+                                        className="block w-full p-4 text-lg rounded-sm bg-black" />
+                                </div>
+                                <div className="pb-2 pt-4">
+                                    <Field
+                                        type="text"
+                                        name="name"
+                                        placeholder="Name"
+                                        className="block w-full p-4 text-lg rounded-sm bg-black" />
                                 </div>
                                 <div className="pb-2 pt-4">
                                     <Field
                                         type="text"
                                         name="address"
                                         placeholder="Address"
-                                        className="block w-full p-4 text-lg rounded-sm bg-black"
-                                    />
+                                        className="block w-full p-4 text-lg rounded-sm bg-black" />
                                 </div>
+                                <div className="pb-2 pt-4">
+                                    <Field
+                                        type="phone"
+                                        name="phone"
+                                        placeholder="Phone"
+                                        className="block w-full p-4 text-lg rounded-sm bg-black" />
+                                </div>
+                                <div className="pb-2 pt-4">
+                                    <Field
+                                        type="text"
+                                        name="details"
+                                        placeholder="Details"
+                                        className="block w-full p-4 text-lg rounded-sm bg-black" />
+                                </div>
+                                <div className="pb-2 pt-4">
+                                    <Field
+                                        type="phone"
+                                        name="phone"
+                                        placeholder="Phone"
+                                        className="block w-full p-4 text-lg rounded-sm bg-black" />
+                                </div>
+
                                 <div className="px-4 pb-2 pt-4">
                                     <button type='submit'
                                         className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Create Account</button>
