@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { sessionStorageGet, sessionStorageRemove } from '../../functions/commonFunctions';
 
 const Navbar = () => {
 
@@ -9,14 +10,15 @@ const Navbar = () => {
                 <div className="container flex justify-between h-12 mx-auto md:justify-center md:space-x-8">
                     <ul className="items-stretch hidden space-x-3 md:flex">
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="/Contact" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Contact</a>
+                            <Link rel="noopener noreferrer" to="/home" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Home</Link>
+                        </li>
+                        <li className="flex">
+                            <Link rel="noopener noreferrer" to="/contact" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Contact</Link>
                         </li>
                         <li className="flex">
                             <a rel="noopener noreferrer" href="/#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Target</a>
                         </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="/#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Price</a>
-                        </li>
+
                     </ul>
                     <a rel="noopener noreferrer" href="/#" aria-label="Back to homepage" className="flex items-center p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 dark:text-violet-400">
@@ -25,14 +27,31 @@ const Navbar = () => {
                         </svg>
                     </a>
                     <ul className="items-stretch hidden space-x-3 md:flex">
-                        <li className="flex">
-                            <Link rel="noopener noreferrer" to="/home" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Home</Link>
-                        </li>
+
                         <li className="flex">
                             <Link rel="noopener noreferrer" to="/admin/booked" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Booked</Link>
                         </li>
                         <li className="flex">
                             <Link rel="noopener noreferrer" to="/#" className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Service</Link>
+                        </li>
+
+                        <li className="flex">
+                            {
+                                sessionStorageGet("user-email") ?
+                                    <button
+                                        onClick={() => {
+                                            console.log('Sign out')
+                                            sessionStorageRemove('user-email')
+                                            window.location.reload()
+                                        }}
+                                        className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">
+                                        Logout
+                                    </button>
+                                    :
+                                    <button className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">
+                                        <Link to="/login">Login</Link>
+                                    </button>
+                            }
                         </li>
                     </ul>
                     <button title="Button" type="button" className="p-4 md:hidden">

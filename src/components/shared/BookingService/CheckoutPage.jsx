@@ -6,6 +6,7 @@ import { dateConvert } from '../../functions/dateConvertFunction';
 import { checkoutForm } from '../../validations/validationSchema';
 import PaymentForm from '../../forms/PaymentForm';
 import axios from 'axios';
+import Loader from '../Loader/Loader';
 
 const FormObserver = ({ controlService, setErrors }) => {
 
@@ -46,8 +47,11 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     const [userInfo, setUserInfo] = useState({})
     const [sectionHide, setSectionHide] = useState(false)
     const [customerErrors, setErrors] = useState("")
+    const [loading, setLoading] = useState(false)
+
     useEffect(() => {
         try {
+            setLoading(true)
             const userEmail = sessionStorageGet("user-email")
             console.log("date local routeId", routeId)
             axios.get(`http://localhost:8080/serviceAvailable/?id=${routeId}&email=${userEmail}`)
@@ -69,26 +73,32 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                             console.log("Updated Data : ", data)
                             setControlService(data)
                         }
+                        setLoading(false)
                     } else {
                         data.status = false;
                         console.log("Updated Data : ", data)
                         setControlService(data)
+                        setLoading(false)
                     }
                 })
                 .catch(function (error) {
                     // handle error
                     console.log("error", error);
+                    setLoading(false)
                 })
                 .finally(function () {
                     // always executed
+                    setLoading(false)
                 });
         } catch (error) {
             console.log("fetch disable error", error)
+            setLoading(false)
         }
     }, [])
 
     // control functions
     const handleSubmit = (values) => {
+        setLoading(true)
         console.log("Values", values)
         setUserInfo(values)
         // sessionStorageStore("user-info", { ...values, vehicleId: routeId })
@@ -113,10 +123,12 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
                     console.log(response);
                     alert("Check your booking at Dashboard")
                     sessionStorageRemove('user-info')
+                    setLoading(false)
                     window.location.replace("http://localhost:3000/admin/booked")
                 })
                 .catch(function (error) {
                     console.log(error);
+                    setLoading(false)
                 });
         }
 
@@ -141,6 +153,7 @@ export default function CheckoutPage({ serviceData, routeId, initialValues }) {
     return (
 
         <div className='mt-2 flex justify-center'>
+            {loading && <Loader />}
             <section>
                 <div className="grid grid-cols-1 md:grid-cols-2">
                     <div className="bg-gray-50 py-12 md:py-24">
