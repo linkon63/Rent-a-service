@@ -11,7 +11,7 @@ import './Home.css'
 const Home = () => {
     return (
         <div className='home-container'>
-            <div className='home-main mt-2'>
+            <div className='home-main mt-2 text-white'>
                 <Slider />
                 <ServiceSection />
                 <HomeMidSection />
