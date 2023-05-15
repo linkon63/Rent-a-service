@@ -81,7 +81,7 @@ export default function CarsServicePage() {
                   </div>
                 </div>
                 <div>
-                  <div className="grid  grid-cols-3 gap-4 pt-2">
+                  <div className="grid  grid-cols-3 gap-4 pt-2 text-white">
                     {servicesData && servicesData.length ? (
                       servicesData.map((data) => (
                         <div
@@ -151,7 +151,7 @@ export default function CarsServicePage() {
               of service.
             </h1>
 
-            <div className="grid grid-cols-2 mt-5">
+            <div className="grid grid-cols-2 mt-5 text-white">
               <section className="dark:bg-gray-800 dark:text-gray-100">
                 <div className="container max-w-5xl px-4 py-12 mx-auto">
                   <div className="grid gap-4 mx-4 sm:grid-cols-12">
